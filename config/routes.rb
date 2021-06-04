@@ -8,4 +8,10 @@ Rails.application.routes.draw do
       put :ajax_friend_request
     end
   end
+
+  resources :friendships, only: [:update] do
+    member do
+      put :ajax_friendship
+    end
+  end
 end

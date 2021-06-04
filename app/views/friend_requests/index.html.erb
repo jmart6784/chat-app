@@ -1,7 +1,35 @@
 <% unless @requests.length === 0 %>
   <% @requests.each do |request| %>
-    <div>
-      <%= link_to request.requestor.email, request.requestor %>
+
+    <% user = request.requestor %>
+
+    <div id="<%= "friendship-div-#{user.id}" %>">
+      <%= link_to user.email, user %>
+      <%= 
+        link_to "Accept", 
+        ajax_friendship_friendship_path(
+          user_a: current_user.id, 
+          user_b: user.id, 
+          parent_div: "friendship-div-#{user.id}",
+          choice: "Accept", 
+          id: 0
+        ), 
+        method: :put, 
+        remote: true
+      %>
+
+      <%= 
+        link_to "Decline", 
+        ajax_friendship_friendship_path(
+          user_a: current_user.id, 
+          user_b: user.id, 
+          parent_div: "friendship-div-#{user.id}",
+          choice: "Decline", 
+          id: 0
+        ),
+        method: :put, 
+        remote: true
+      %>
     </div>
   <% end %>
 <% else %>

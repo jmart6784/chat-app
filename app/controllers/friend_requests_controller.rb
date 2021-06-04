@@ -11,7 +11,7 @@ class FriendRequestsController < ApplicationController
 
     unless @requestor === @receiver || !@friend_request.nil?
       @request_text = "Sent"
-      FriendRequest.create(requestor_id: @requestor.id, receiver_id: @receiver.id);
+      FriendRequest.create(requestor_id: @requestor.id, receiver_id: @receiver.id)
     else
       @request_text = "Add"
     end
