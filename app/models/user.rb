@@ -3,4 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+
+  has_many :requests_as_requestor, foreign_key: :requestor_id, class_name: :FriendRequest
+  has_many :requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest
 end
