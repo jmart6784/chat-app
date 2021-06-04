@@ -1,5 +1,12 @@
 <h1>Users Index</h1>
 
 <% @users.each do |user| %>
-  <p><%= link_to user.email, user %> </p>
+  <div>
+    <%= link_to user.email, user %>
+
+    <% @friend_request = FriendRequest.find_by(requestor_id: current_user.id, receiver_id: user.id) %>
+    <% request_txt = @friend_request ? "Sent" : "Add" %>
+
+    <%= link_to request_txt, ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: user.id, html_id: "request-#{user.id}", id: 0), method: :put, remote: true, id: "request-#{user.id}" %> 
+  </div>
 <% end %>
