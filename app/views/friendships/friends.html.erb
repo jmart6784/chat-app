@@ -1,0 +1,5 @@
+<h1>Friends</h1>
+
+<% @friends.each do |friend| %>
+  <%= link_to friend.email, friend %>
+<% end %>

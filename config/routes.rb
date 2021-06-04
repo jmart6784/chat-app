@@ -14,4 +14,5 @@ Rails.application.routes.draw do
       put :ajax_friendship
     end
   end
+  get "friends/:id", to: "friendships#friends", as: :friends
 end

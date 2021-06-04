@@ -1,4 +1,11 @@
 class FriendshipsController < ApplicationController
+  include ApplicationHelper
+
+  def friends
+    user = User.find(params[:id])
+    @friends = friend_list(user)
+  end
+
   def ajax_friendship
     @user_a = User.find(params[:user_a])
     @user_b = User.find(params[:user_b])

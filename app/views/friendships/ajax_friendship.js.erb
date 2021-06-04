@@ -1,2 +1,12 @@
 var requestDiv = document.getElementById("<%= params[:parent_div] %>");
-requestDiv.remove();
+var requestOpt = document.getElementById("friend-request-options");
+
+<% if params[:choice] === "Accept" %>
+  requestOpt.innerHTML = "";
+
+  var friendTxt = document.createElement("span");
+  friendTxt.innerHTML = '<i class="fas fa-user-check"></i>';
+  requestOpt.appendChild(friendTxt);
+<% else %>
+  requestDiv.remove();
+<% end %>
