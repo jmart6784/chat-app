@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "users#index"
   resources :users, only: [:index, :show]
 
-  resources :friend_requests, only: [:update] do
+  resources :friend_requests, only: [:index, :update] do
     member do
       put :ajax_friend_request
     end

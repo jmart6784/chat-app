@@ -1,0 +1,9 @@
+<% unless @requests.length === 0 %>
+  <% @requests.each do |request| %>
+    <div>
+      <%= link_to request.requestor.email, request.requestor %>
+    </div>
+  <% end %>
+<% else %>
+  <div>No requests yet</div>
+<% end %>
