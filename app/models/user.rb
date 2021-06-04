@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :requests_as_requestor, foreign_key: :requestor_id, class_name: :FriendRequest, dependent: :destroy
   has_many :requests_as_receiver, foreign_key: :receiver_id, class_name: :FriendRequest, dependent: :destroy
+
+  has_many :friendships, ->(user) { where("user_a = ? OR user_b = ?", user.id, user.id) }, dependent: :destroy
+   has_many :friends, through: :friendships, dependent: :destroy
 end
