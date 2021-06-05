@@ -1,6 +1,4 @@
 class FriendshipsController < ApplicationController
-  include ApplicationHelper
-
   def friends
     user = User.find(params[:id])
     @friends = friend_list(user)

@@ -6,9 +6,58 @@
   <div>
     <%= link_to user.email, user %>
 
-    <% @friend_request = FriendRequest.find_by(requestor_id: current_user.id, receiver_id: user.id) %>
-    <% request_txt = @friend_request ? "Sent" : "Add" %>
+    <% friend_request = FriendRequest.find_by(requestor_id: current_user.id, receiver_id: user.id) %>
 
-    <%= link_to request_txt, ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: user.id, html_id: "request-#{user.id}", id: 0), method: :put, remote: true, id: "request-#{user.id}" %> 
+
+
+    <% if request_pending?(current_user, user) %>
+      <span>Sent</span>
+    <% elsif response_pending?(current_user, user) %>
+      <span>
+        <span id="friend-request-options">
+          <%= 
+            link_to "Accept", 
+            ajax_friendship_friendship_path(
+              user_a: current_user.id, 
+              user_b: user.id, 
+              parent_div: "friendship-div-#{user.id}",
+              choice: "Accept", 
+              id: 0
+            ), 
+            method: :put, 
+            remote: true
+          %>
+
+          <%= 
+            link_to "Decline", 
+            ajax_friendship_friendship_path(
+              user_a: current_user.id, 
+              user_b: user.id, 
+              parent_div: "friendship-div-#{user.id}",
+              choice: "Decline", 
+              id: 0
+            ),
+            method: :put, 
+            remote: true
+          %>
+        </div>
+      </span>
+    <% elsif is_friend?(current_user, user) %>
+      <span>Unfriend</span>
+    <% elsif is_friend?(current_user, user) === false %>
+      <% request_txt = friend_request ? "Sent" : "Add" %>
+      <%= 
+        link_to request_txt, 
+        ajax_friend_request_friend_request_path(
+          requestor_id: current_user.id, 
+          receiver_id: user.id, 
+          html_id: "request-#{user.id}", 
+          id: 0
+        ), 
+        method: :put, 
+        remote: true, 
+        id: "request-#{user.id}" 
+      %>
+    <% end %>
   </div>
 <% end %>
