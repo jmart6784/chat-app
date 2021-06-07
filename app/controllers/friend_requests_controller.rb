@@ -7,6 +7,8 @@ class FriendRequestsController < ApplicationController
     @requestor = User.find(params[:requestor_id])
     @receiver = User.find(params[:receiver_id])
 
+    return if current_user != @requestor
+
     existing_request = FriendRequest.find_by(requestor_id: @receiver.id, receiver_id: @requestor.id)
 
     if existing_request.nil?
