@@ -14,7 +14,13 @@ RSpec.describe User, type: :model do
 
   it "User has an email" do
     current_user.email = ""
-
     expect(current_user).to_not be_valid
+    current_user.email = "rspec@example.com"
+  end
+
+  it "User email format valid" do
+    current_user.email = "a invalid @ email"
+    email_validity = /\A[^@\s]+@[^@\s]+\z/.match(current_user.email)
+    expect(email_validity.nil?).to eql(true)
   end
 end
