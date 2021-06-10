@@ -28,5 +28,12 @@ RSpec.describe FriendRequest, type: :model do
   it "Friend Request has a requestor_id" do
     friend_request.requestor_id = nil
     expect(friend_request).to_not be_valid
+    friend_request.requestor_id = user_1.id
+  end
+
+  it "Friend Request has a receiver_id" do
+    friend_request.receiver_id = nil
+    expect(friend_request).to_not be_valid
+    friend_request.receiver_id = user_2.id
   end
 end
