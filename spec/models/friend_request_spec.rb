@@ -5,7 +5,7 @@ RSpec.describe FriendRequest, type: :model do
   user_2 = User.find_by(email: "rspec2@example.com")
 
   if user_1.nil?
-    user_1 = User.creaet!(
+    user_1 = User.create(
       email: "rspec@example.com", 
       password: "password", 
       password_confirmation: "password"
@@ -13,7 +13,7 @@ RSpec.describe FriendRequest, type: :model do
   end
 
   if user_2.nil?
-    user_2 = User.create!(
+    user_2 = User.create(
       email: "rspec2@example.com", 
       password: "password", 
       password_confirmation: "password"

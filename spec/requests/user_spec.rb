@@ -14,14 +14,14 @@ RSpec.describe "Users", type: :request do
 
   describe "GET /index" do
     it "renders users index if signed in" do
-      login_as current_user
+      sign_in(current_user)
       get users_path
       expect(response).to render_template(:index)
     end
 
     it "redirect to sign in page if not authenticated" do
-      login_as current_user
-      logout
+      sign_in(current_user)
+      sign_out(current_user)
       get users_path
       expect(response).to redirect_to(new_user_session_path)
     end
@@ -29,10 +29,9 @@ RSpec.describe "Users", type: :request do
 
   describe "GET /users/:id" do
     it "Retrieves user given the params[:id]" do
-      login_as current_user
+      sign_in(current_user)
       get "/users/#{current_user.id}"
       expect(response).to render_template(:show)
-      expect(response).to have_http_status(200)
     end
   end
 end
