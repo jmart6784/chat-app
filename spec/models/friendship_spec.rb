@@ -37,4 +37,10 @@ RSpec.describe Friendship, type: :model do
     expect(friendship).to_not be_valid
     friendship.user_a = user_1.id
   end
+
+  it "Friendship has a user_b ID" do
+    friendship.user_b = nil
+    expect(friendship).to_not be_valid
+    friendship.user_b = user_2.id
+  end
 end
