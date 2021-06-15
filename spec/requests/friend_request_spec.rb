@@ -35,7 +35,13 @@ RSpec.describe "FriendRequests", type: :request do
       sign_out(user_1)
       sign_in(user_1)
       get friend_requests_path
-      expect(response).to be_successful
+      expect(response).to render_template(:index)
+    end
+
+    it "Redirect to sign in page if not signed in" do
+      sign_out(user_1)
+      get friend_requests_path
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 
