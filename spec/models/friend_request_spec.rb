@@ -20,10 +20,17 @@ RSpec.describe FriendRequest, type: :model do
     )
   end
 
-  friend_request = FriendRequest.create(
+  friend_request = FriendRequest.find_by(
     requestor_id: user_1.id,
     receiver_id: user_2.id
   )
+
+  if friend_request.nil?
+    friend_request = FriendRequest.create(
+      requestor_id: user_1.id,
+      receiver_id: user_2.id
+    )
+  end
 
   it "Friend Request has a requestor_id" do
     friend_request.requestor_id = nil
