@@ -33,5 +33,11 @@ RSpec.describe "Friendships", type: :request do
       get friends_path(id: user_1.id)
       expect(response).to redirect_to(new_user_session_path)
     end
+
+    it "Fails to get friends list if ID param is missing" do
+      sign_out(user_1)
+      sign_in(user_1)
+      expect {get friends_path(id: nil)}.to raise_error(ActionController::UrlGenerationError)
+    end
   end
 end
