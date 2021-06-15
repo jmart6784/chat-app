@@ -30,6 +30,15 @@ RSpec.describe "FriendRequests", type: :request do
     }
   end
 
+  describe "GET /index" do
+    it "gets index page" do
+      sign_out(user_1)
+      sign_in(user_1)
+      get friend_requests_path
+      expect(response).to be_successful
+    end
+  end
+
   describe "PUT /ajax_friend_request" do
     it "Creates friend request given two users" do
       sign_out(user_1)
