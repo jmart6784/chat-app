@@ -27,5 +27,11 @@ RSpec.describe "Friendships", type: :request do
       get friends_path(id: user_1.id)
       expect(response).to render_template(:friends) 
     end
+
+    it "if not authenticated redirect to sign in page" do
+      sign_out(user_1)
+      get friends_path(id: user_1.id)
+      expect(response).to redirect_to(new_user_session_path)
+    end
   end
 end
