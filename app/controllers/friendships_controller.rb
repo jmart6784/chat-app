@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find_by(user_a: @user_a.id, user_b: @user_b.id)
     friend_request = FriendRequest.find_by(requestor_id: @user_b.id, receiver_id: @user_a.id)
 
-    if @friendship.nil? && current_user.requests_as_receiver.include?(friend_request)
+    if @friendship.nil? && current_user.requests_as_receiver.include?(friend_request) && @user_a != @user_b
       if params[:choice] === "Accept"
         fr = Friendship.new(user_a: @user_a.id, user_b: @user_b.id)
 

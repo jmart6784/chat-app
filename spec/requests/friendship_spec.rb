@@ -20,12 +20,23 @@ RSpec.describe "Friendships", type: :request do
     )
   end
 
-  let(:valid_params) do
+  let(:valid_accept_params) do
     params = {
       id: 0,  
       user_a: user_1.id, 
       user_b: user_2.id,
       choice: "Accept",
+      parent_div: "friendship-div-#{user_2.id}", 
+      format: :js
+    }
+  end
+
+  let(:valid_decline_params) do
+    params = {
+      id: 0,  
+      user_a: user_1.id, 
+      user_b: user_2.id,
+      choice: "Decline",
       parent_div: "friendship-div-#{user_2.id}", 
       format: :js
     }
@@ -56,7 +67,7 @@ RSpec.describe "Friendships", type: :request do
     it "Creates friendship given two users" do
       sign_out(user_1)
       sign_in(user_1)
-      put ajax_friendship_friendship_path(valid_params)
+      put ajax_friendship_friendship_path(valid_accept_params)
       fs = Friendship.find_by(user_a: user_1.id, user_b: user_2.id)
       expect(fs.nil?).to eql(false)
     end
