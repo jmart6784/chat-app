@@ -94,7 +94,21 @@ RSpec.describe "Friendships", type: :request do
         user_a: nil, 
         user_b: user_2.id,
         choice: "Accept",
-        parent_div: "friendship-div-#{user_1.id}", 
+        parent_div: "friendship-div-#{user_2.id}", 
+        format: :js
+      }
+      sign_out(user_1)
+      sign_in(user_1)
+      expect {put ajax_friendship_friendship_path(params)}.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "Doesn't create friendship when user_b is nil" do
+      params = {
+        id: 0,  
+        user_a: user_1.id, 
+        user_b: nil,
+        choice: "Accept",
+        parent_div: "friendship-div-#{nil}", 
         format: :js
       }
       sign_out(user_1)
