@@ -132,5 +132,24 @@ RSpec.describe "Friendships", type: :request do
       after_count = Friendship.all.count
       expect(before_count).to eql(after_count)
     end
+
+    it "Doesn't create friendship when parent_div param is nil" do
+      params = {
+        id: 0,  
+        user_a: user_1.id, 
+        user_b: user_2.id,
+        choice: "Accept",
+        parent_div: nil, 
+        format: :js
+      }
+      fs = Friendship.find_by(user_a: user_1.id, user_b: user_2.id)
+      fs.destroy unless fs.nil?
+      sign_out(user_1)
+      sign_in(user_1)
+      before_count = Friendship.all.count
+      put ajax_friendship_friendship_path(params)
+      after_count = Friendship.all.count
+      expect(before_count).to eql(after_count)
+    end
   end
 end
