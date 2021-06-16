@@ -115,5 +115,22 @@ RSpec.describe "Friendships", type: :request do
       sign_in(user_1)
       expect {put ajax_friendship_friendship_path(params)}.to raise_error(ActiveRecord::RecordNotFound)
     end
+
+    it "Doesn't create friendship when choice param is nil" do
+      params = {
+        id: 0,  
+        user_a: user_1.id, 
+        user_b: user_2.id,
+        choice: nil,
+        parent_div: "friendship-div-#{user_2.id}", 
+        format: :js
+      }
+      sign_out(user_1)
+      sign_in(user_1)
+      before_count = Friendship.all.count
+      put ajax_friendship_friendship_path(params)
+      after_count = Friendship.all.count
+      expect(before_count).to eql(after_count)
+    end
   end
 end
