@@ -165,5 +165,27 @@ RSpec.describe "Friendships", type: :request do
       sign_in(user_1)
       expect {put ajax_friendship_friendship_path(params)}.to raise_error(ActionController::UrlGenerationError)
     end
+
+    it "Doesn't create friendship if the same one already exists" do
+      params = {
+        id: 0,  
+        user_a: user_1.id, 
+        user_b: user_2.id,
+        choice: "Accept",
+        parent_div: "friendship-div-#{user_2.id}", 
+        format: :js
+      }
+      fs = Friendship.find_by(user_a: user_1.id, user_b: user_2.id)
+
+      fs = Friendship.create(user_a: user_1.id, user_b: user_2.id) if fs.nil?
+
+      sign_out(user_1)
+      sign_in(user_1)
+      before_count = Friendship.all.count
+      put ajax_friendship_friendship_path(params)
+      after_count = Friendship.all.count
+      puts "before #{before_count} after #{after_count}"
+      expect(before_count).to eql(after_count)
+    end
   end
 end
