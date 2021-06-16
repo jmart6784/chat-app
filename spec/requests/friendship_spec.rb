@@ -71,5 +71,21 @@ RSpec.describe "Friendships", type: :request do
       fs = Friendship.find_by(user_a: user_1.id, user_b: user_2.id)
       expect(fs.nil?).to eql(false)
     end
+
+    it "Doesn't create friendship when two users are the same" do
+      params = {
+        id: 0,  
+        user_a: user_1.id, 
+        user_b: user_1.id,
+        choice: "Accept",
+        parent_div: "friendship-div-#{user_1.id}", 
+        format: :js
+      }
+      sign_out(user_1)
+      sign_in(user_1)
+      put ajax_friendship_friendship_path(params)
+      fs = Friendship.find_by(user_a: user_1.id, user_b: user_1.id)
+      expect(fs.nil?).to eql(true)
+    end
   end
 end
