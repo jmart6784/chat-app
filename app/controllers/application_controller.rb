@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def friend_list(user)
     user.friend_as + user.friend_bs
@@ -23,5 +24,12 @@ class ApplicationController < ActionController::Base
     fr = FriendRequest.find_by(requestor_id: requestor.id, receiver_id: curr_user.id)
 
     fr.nil? ? false : true
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :username])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :username, :bio])
   end
 end
