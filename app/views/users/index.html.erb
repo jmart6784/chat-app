@@ -43,7 +43,13 @@
         </div>
       </span>
     <% elsif is_friend?(current_user, user) %>
-      <span>Unfriend</span>
+      <%= 
+        link_to "Unfriend", 
+        ajax_friendship_destroy_friendship_path(id: user.id, html_id: "unfriend-#{user.id}"), 
+        method: :delete, 
+        remote: true,
+        id: "unfriend-#{user.id}"
+      %>
     <% elsif is_friend?(current_user, user) === false %>
       <% request_txt = friend_request ? "Sent" : "Add" %>
       <%= 

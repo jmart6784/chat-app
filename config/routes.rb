@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:update] do
     member do
       put :ajax_friendship
+      delete :ajax_friendship_destroy
     end
   end
   get "friends/:id", to: "friendships#friends", as: :friends

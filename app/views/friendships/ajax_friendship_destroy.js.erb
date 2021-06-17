@@ -1,0 +1,7 @@
+var link = document.getElementById("<%= params[:html_id] %>");
+console.log(link);
+link.textContent = "Add";
+link.setAttribute("data-method", "put");
+link.setAttribute("data-remote", "true");
+link.id = "request-<%= params[:id] %>"
+link.href = '<%= raw ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: params[:id].to_i, html_id: "request-#{params[:id]}", id: 0) %>';
