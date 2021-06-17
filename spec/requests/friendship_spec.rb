@@ -31,17 +31,6 @@ RSpec.describe "Friendships", type: :request do
     }
   end
 
-  let(:valid_decline_params) do
-    params = {
-      id: 0,  
-      user_a: user_1.id, 
-      user_b: user_2.id,
-      choice: "Decline",
-      parent_div: "friendship-div-#{user_2.id}", 
-      format: :js
-    }
-  end
-
   describe "GET /index" do
     it "gets friend list if authenticated" do
       sign_out(user_1)
