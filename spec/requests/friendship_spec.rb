@@ -231,6 +231,21 @@ RSpec.describe "Friendships", type: :request do
       delete ajax_friendship_destroy_friendship_path(params)
       after_count = Friendship.all.count
       expect(before_count).to eql(after_count)
-    end    
+    end
+
+    it "Throws an error if id param is missing" do
+      friendship = Friendship.find_by(user_a: user_1.id, user_b: user_2.id)
+
+      Friendship.create(user_a: user_1.id, user_b: user_2.id) if friendship.nil?
+
+      sign_out(user_1)
+      sign_in(user_1)
+      params = {
+        id: nil,  
+        html_id: "unfriend-#{user_2.id}", 
+        format: :js
+      }
+      expect {delete ajax_friendship_destroy_friendship_path(params)}.to raise_error(ActionController::UrlGenerationError)
+    end  
   end
 end
