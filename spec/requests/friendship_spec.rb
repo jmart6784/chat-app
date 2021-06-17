@@ -214,5 +214,23 @@ RSpec.describe "Friendships", type: :request do
       delete ajax_friendship_destroy_friendship_path(params)
       expect(Friendship.find_by(user_a: user_1.id, user_b: user_2.id).nil?).to eql(true)
     end
+
+    it "Fails to delete a friendship that doesn't exist" do
+      friendship = Friendship.find_by(user_a: user_1.id, user_b: user_2.id)
+
+      friendship.destroy unless friendship.nil?
+
+      sign_out(user_1)
+      sign_in(user_1)
+      params = {
+        id: user_2.id,  
+        html_id: "unfriend-#{user_2.id}", 
+        format: :js
+      }
+      before_count = Friendship.all.count
+      delete ajax_friendship_destroy_friendship_path(params)
+      after_count = Friendship.all.count
+      expect(before_count).to eql(after_count)
+    end    
   end
 end
