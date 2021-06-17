@@ -77,5 +77,18 @@ RSpec.describe "FriendRequests", type: :request do
       after_count = FriendRequest.all.count
       expect(before_count).to eql(after_count)
     end
+
+    it "Doesn't create friend request if friendship already exists" do
+      existing_friendship = Friendship.find_by(user_a: user_1.id, user_b: user_2.id)
+
+      Friendship.create(user_a: user_1.id, user_b: user_2.id) if existing_friendship.nil?
+
+      sign_out(user_1)
+      sign_in(user_1)
+      before_count = FriendRequest.all.count
+      put ajax_friend_request_friend_request_path(valid_params)
+      after_count = FriendRequest.all.count
+      expect(before_count).to eql(after_count)
+    end
   end
 end
