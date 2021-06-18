@@ -1,45 +1,7 @@
 <h1>Friend requests</h1>
-
 <% unless @requests.length === 0 %>
   <% @requests.each do |request| %>
-
-    <% user = request.requestor %>
-
-    <div id="<%= "friendship-div-#{user.id}" %>">
-      <%= link_to user.email, user %>
-
-      <span id="<%= "parent-fs-div-#{user.id}" %>">
-        <span id="<%= "friendship-options-#{user.id}" %>">
-          <%= 
-            link_to "Accept", 
-            ajax_friendship_friendship_path(
-              user_a: current_user.id, 
-              user_b: user.id, 
-              parent_div: "parent-fs-div-#{user.id}",
-              options_div: "friendship-options-#{user.id}",
-              choice: "Accept", 
-              id: 0
-            ), 
-            method: :put, 
-            remote: true
-          %>
-
-          <%= 
-            link_to "Decline", 
-            ajax_friendship_friendship_path(
-              user_a: current_user.id, 
-              user_b: user.id, 
-              parent_div: "parent-fs-div-#{user.id}",
-              options_div: "friendship-options-#{user.id}",
-              choice: "Decline", 
-              id: 0
-            ),
-            method: :put, 
-            remote: true
-          %>
-        </span>
-      </span>
-    </div>
+    <%= render "global_partials/user_request_options", locals: {user: request.requestor} %>
   <% end %>
 <% else %>
   <div>No requests yet</div>
