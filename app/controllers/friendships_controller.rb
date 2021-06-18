@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+
   def friends
     user = User.find(params[:id])
     @friends = friend_list(user)
@@ -7,6 +8,8 @@ class FriendshipsController < ApplicationController
   def ajax_friendship
     @user_a = User.find(params[:user_a])
     @user_b = User.find(params[:user_b])
+
+    return unless @user_a === current_user
 
     @friendship = Friendship.find_by(user_a: @user_a.id, user_b: @user_b.id)
     friend_request = FriendRequest.find_by(requestor_id: @user_b.id, receiver_id: @user_a.id)
