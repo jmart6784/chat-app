@@ -1,12 +1,31 @@
-var requestDiv = document.getElementById("<%= params[:parent_div] %>");
-var requestOpt = document.getElementById("friend-request-options");
+var parentDiv = document.getElementById("<%= params[:parent_div] %>");
+var optionsDiv = document.getElementById("<%= params[:options_div] %>");
 
 <% if params[:choice] === "Accept" %>
-  requestOpt.innerHTML = "";
+  var content = `
+    <a
+      id="unfriend-<%= @user_b.id %>"
+      data-remote="true"
+      data-method="delete"
+      rel="nofollow" 
+      href="<%= raw ajax_friendship_destroy_friendship_path(id: @user_b.id, html_id: "unfriend-#{@user_b.id}") %>"
+    >
+      Unfriend
+    </a>`;
 
-  var friendTxt = document.createElement("span");
-  friendTxt.innerHTML = '<i class="fas fa-user-check"></i>';
-  requestOpt.appendChild(friendTxt);
+  parentDiv.insertAdjacentHTML("afterend", content);
+  parentDiv.remove();
 <% else %>
-  requestDiv.remove();
+  var content = `
+    <a 
+      id="request-<%= @user_b.id %>" 
+      data-remote="true" 
+      rel="nofollow" 
+      data-method="put" 
+      href="<%= raw ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: @user_b.id, html_id: "request-#{@user_b.id}", id: 0) %>">
+        Add
+    </a>`;
+
+  parentDiv.insertAdjacentHTML("afterend", content);
+  parentDiv.remove();
 <% end %>

@@ -13,14 +13,15 @@
     <% if request_pending?(current_user, user) %>
       <span>Sent</span>
     <% elsif response_pending?(current_user, user) %>
-      <span>
-        <span id="friend-request-options">
+      <span id="<%= "parent-fs-div-#{user.id}" %>">
+        <span id="<%= "friendship-options-#{user.id}" %>">
           <%= 
             link_to "Accept", 
             ajax_friendship_friendship_path(
               user_a: current_user.id, 
               user_b: user.id, 
-              parent_div: "friendship-div-#{user.id}",
+              parent_div: "parent-fs-div-#{user.id}",
+              options_div: "friendship-options-#{user.id}",
               choice: "Accept", 
               id: 0
             ), 
@@ -33,14 +34,15 @@
             ajax_friendship_friendship_path(
               user_a: current_user.id, 
               user_b: user.id, 
-              parent_div: "friendship-div-#{user.id}",
+              parent_div: "parent-fs-div-#{user.id}",
+              options_div: "friendship-options-#{user.id}",
               choice: "Decline", 
               id: 0
             ),
             method: :put, 
             remote: true
           %>
-        </div>
+        </span>
       </span>
     <% elsif is_friend?(current_user, user) %>
       <%= 
