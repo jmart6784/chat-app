@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?
+  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?, :full_name
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     fr = FriendRequest.find_by(requestor_id: requestor.id, receiver_id: curr_user.id)
 
     fr.nil? ? false : true
+  end
+
+  def full_name(user)
+    "#{user.first_name} #{user.last_name}"
   end
 
   protected
