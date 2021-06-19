@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     end
   end
   get "friends/:id", to: "friendships#friends", as: :friends
+
+  resources :chats
 end
