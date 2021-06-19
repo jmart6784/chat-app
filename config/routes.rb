@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get "friends/:id", to: "friendships#friends", as: :friends
 
   resources :chats
+  put :ajax_create_chat, to: "chats#ajax_create_chat", as: :ajax_create_chat
 end
