@@ -23,6 +23,10 @@ class ChatsController < ApplicationController
     end
   end
 
+  def edit
+    @chat = Chat.find(params[:id])
+  end
+
   def ajax_create_chat
 
   end

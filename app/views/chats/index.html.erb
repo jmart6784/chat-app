@@ -1,5 +1,10 @@
 <h1>Chats index</h1>
 
 <% @chats.each do |chat| %>
-  <p><%= link_to chat.name, chat %> host: <%= link_to chat.host.username, chat.host %></p>
+  <div>
+    <%= link_to chat.name, chat %> 
+    <span>host:</span> <%= link_to chat.host.username, chat.host %>
+    <%= link_to "Edit", edit_chat_path(chat) %>
+  </div>
+  <br />
 <% end %>
