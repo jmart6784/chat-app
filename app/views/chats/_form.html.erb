@@ -1,0 +1,21 @@
+<h1>Chat form</h1>
+
+<div>
+  <% if @chat.errors.any? %>
+    <div>
+      <p><%= flash[:danger] %></p>
+      <ul>
+        <% @chat.errors.full_messages.each do |msg| %>
+          <li><span><%= msg %></span></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <%= form_with model: @chat, local: true do |f| %>
+    <%= f.text_field :name, placeholder: "Chat name" %>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
