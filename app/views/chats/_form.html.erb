@@ -13,7 +13,8 @@
   <% end %>
 
 
-  <%= form_with model: @chat, local: true do |f| %>
+  <%= form_with model: @chat do |f| %>
+    <%= f.label :name %><br />
     <%= f.text_field :name, placeholder: "Chat name" %>
 
     <%= f.submit "Submit" %>
