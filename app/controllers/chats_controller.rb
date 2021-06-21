@@ -7,7 +7,11 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
   end
 
-  def ajax_create_chat
+  def new
     
+  end
+
+  def ajax_create_chat
+
   end
 end

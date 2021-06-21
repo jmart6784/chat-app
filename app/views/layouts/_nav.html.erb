@@ -2,6 +2,10 @@
 <div>
   <span><%= full_name(current_user) %></span>
   <%= link_to "Home", root_path %>
+  <% if false %>
+  <%= link_to "Message", ajax_create_chat_path(id: @user), method: :put, remote: true %>
+  <% end %>
+  <%= link_to "Create Chat Room", new_chat_path %>
   <%= link_to "Chats", chats_path %>
   <%= link_to "Users", users_path %>
   <%= link_to "Friends", friends_path(current_user.id) %>
