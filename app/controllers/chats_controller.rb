@@ -1,4 +1,6 @@
 class ChatsController < ApplicationController
+  before_action :set_chat, only: [:edit, :update, :destroy]
+
   def index
     @chats = Chat.all
   end
@@ -48,5 +50,10 @@ class ChatsController < ApplicationController
 
   def chat_params
     params.require(:chat).permit(:name)
+  end
+
+  def set_chat
+    @chat = Chat.find(params[:id])
+    redirect_to root_path unless @chat.host === current_user
   end
 end
