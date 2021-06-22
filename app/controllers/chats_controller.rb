@@ -27,6 +27,13 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
   end
 
+  def update
+    @chat = Chat.find(params[:id])
+    @chat.host_id = current_user.id
+    @chat.update(chat_params)
+    redirect_to chat_path(@chat)
+  end
+
   def ajax_create_chat
 
   end
