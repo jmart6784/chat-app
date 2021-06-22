@@ -1,4 +1,4 @@
 <h1>Chat show</h1>
 
 <p>Name: <%= @chat.name %></p>
-<p>Host: <%= @chat.host.username %></p>
+<p>Host: <%= link_to @chat.host.username, @chat.host %></p>
