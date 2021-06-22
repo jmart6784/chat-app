@@ -5,6 +5,7 @@
     <%= link_to chat.name, chat %> 
     <span>host:</span> <%= link_to chat.host.username, chat.host %>
     <%= link_to "Edit", edit_chat_path(chat) %>
+    <%= link_to "Delete", chat, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
   <br />
 <% end %>

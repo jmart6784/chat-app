@@ -34,6 +34,12 @@ class ChatsController < ApplicationController
     redirect_to chat_path(@chat)
   end
 
+  def destroy
+    @chat = Chat.find(params[:id])
+    @chat.destroy
+    redirect_to chats_path
+  end
+
   def ajax_create_chat
 
   end
