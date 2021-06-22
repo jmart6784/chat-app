@@ -42,10 +42,6 @@ class ChatsController < ApplicationController
     redirect_to chats_path
   end
 
-  def ajax_create_chat
-
-  end
-
   private
 
   def chat_params
