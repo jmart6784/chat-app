@@ -2,3 +2,5 @@
 
 <p>Name: <%= @chat.name %></p>
 <p>Host: <%= link_to @chat.host.username, @chat.host %></p>
+<%= link_to "Edit", edit_chat_path(@chat) %>
+<%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -29,7 +29,8 @@ class User < ApplicationRecord
     through: :friendships_as_friend_a, 
     dependent: :destroy
 
-  has_many :chats, foreign_key: :host_id
+  has_many :chats, foreign_key: :host_id, 
+  dependent: :destroy
 
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :username, uniqueness: true, presence: true, length: {minimum: 4, maximum: 16}, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }
