@@ -8,7 +8,10 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    
+    @message = Message.find(params[:id])
+    @chat = Chat.find(@message.chat_id)
+    @message.destroy
+    redirect_to @chat
   end
 
   private
