@@ -1,0 +1,5 @@
+  <% message = locals[:message] %>
+  
+  <% is_author = message.user === current_user %>
+
+  <p><%= message.content %> by: <%= is_author ? "Me" : full_name(message.user) %> <%= link_to "Delete", chat_message_path(@chat, message), method: :delete, data: { confirm: 'Are you sure?' } if is_author %></p>
