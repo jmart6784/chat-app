@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   get "friends/:id", to: "friendships#friends", as: :friends
 
   resources :chats do
-    resources :messages, only: [:create, :edit, :update, :destroy]
+    resources :messages, only: [:create, :destroy]
   end
 end

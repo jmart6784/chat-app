@@ -7,14 +7,6 @@ class MessagesController < ApplicationController
     redirect_to @chat
   end
 
-  def edit
-    
-  end
-
-  def update
-    
-  end
-
   def destroy
     
   end
