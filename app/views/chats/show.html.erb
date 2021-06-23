@@ -6,3 +6,12 @@
   <%= link_to "Edit", edit_chat_path(@chat) %>
   <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
+
+<div>
+  <%= render "messages/form" %>
+</div>
+
+<% @chat.messages.each do |message| %>
+  <% is_author = message.user === current_user %>
+  <p><%= message.content %> by: <%= is_author ? "Me" : full_name(message.user) %></p>
+<% end %>
