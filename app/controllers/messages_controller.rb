@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
     @chat = Chat.find(message_params[:chat_id])
     @message = Message.new(message_params)
     @message.save
-    redirect_to @chat
+
+    ActionCable.server.broadcast("chat_channel_#{@message.chat_id}", {message: @message.content})
   end
 
   def destroy
