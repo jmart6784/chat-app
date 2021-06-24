@@ -8,6 +8,7 @@ class User < ApplicationRecord
     foreign_key: :requestor_id, 
     class_name: :FriendRequest, 
     dependent: :destroy
+
   has_many :requests_as_receiver, 
     foreign_key: :receiver_id, 
     class_name: :FriendRequest, 
@@ -17,6 +18,7 @@ class User < ApplicationRecord
     foreign_key: :user_a, 
     class_name: :Friendship, 
     dependent: :destroy
+
   has_many :friendships_as_friend_b, 
     foreign_key: :user_b, 
     class_name: :Friendship, 
@@ -25,6 +27,7 @@ class User < ApplicationRecord
   has_many :friend_as, 
     through: :friendships_as_friend_b, 
     dependent: :destroy
+
   has_many :friend_bs, 
     through: :friendships_as_friend_a, 
     dependent: :destroy
@@ -33,6 +36,16 @@ class User < ApplicationRecord
   dependent: :destroy
 
   has_many :messages, dependent: :destroy
+
+  has_many :invites_as_host, 
+    foreign_key: :host_id, 
+    class_name: :Invite, 
+    dependent: :destroy
+
+  has_many :invites_as_guest, 
+    foreign_key: :guest_id, 
+    class_name: :Invite, 
+    dependent: :destroy
 
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :username, uniqueness: true, presence: true, length: {minimum: 4, maximum: 16}, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }
