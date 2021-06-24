@@ -16,17 +16,21 @@ document.addEventListener('turbolinks:load', () => {
   
     received(data) {
       // Called when there's incoming data on the websocket for this channel
-  
-      if (data.author_id === currentUserID) {
-        chatBox.innerHTML += `
-        <p>
-          ${data.message} by: Me <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/chats/${data.chat_id}/messages/${data.message_id}">Delete</a>
-        </p>
-        `;
-      } else {
-        chatBox.innerHTML += `
-        <p>${data.message} by: ${data.username}</p>
-        `;
+
+      if (data.action === "create") {
+        if (data.author_id === currentUserID) {
+          chatBox.innerHTML += `
+          <p id="message-${data.message_id}">
+            ${data.message} by: Me <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/chats/${data.chat_id}/messages/${data.message_id}">Delete</a>
+          </p>
+          `;
+        } else {
+          chatBox.innerHTML += `
+          <p id="message-${data.message_id}">${data.message} by: ${data.username}</p>
+          `;
+        }
+      } else if (data.action === "destroy") {
+        document.getElementById(`message-${data.message_id}`).remove();
       }
     }
   });

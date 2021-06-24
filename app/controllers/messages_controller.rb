@@ -14,7 +14,8 @@ class MessagesController < ApplicationController
         author_id: current_user.id, 
         username: current_user.username,
         chat_id: @chat.id,
-        message_id: @message.id
+        message_id: @message.id,
+        action: "create",
       }
     )
   end
@@ -23,7 +24,18 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @chat = Chat.find(@message.chat_id)
     @message.destroy
-    redirect_to @chat
+
+    ActionCable.server.broadcast(
+      "chat_channel_#{@message.chat_id}", 
+      {
+        message: @message.content, 
+        author_id: current_user.id, 
+        username: current_user.username,
+        chat_id: @chat.id,
+        message_id: @message.id,
+        action: "destroy"
+      }
+    )
   end
 
   private
