@@ -11,7 +11,7 @@
   <%= render "messages/form" %>
 </div>
 
-<div id="chat-box">
+<div id="chat-box" data-user-id="<%= current_user.id %>" data-chat-id="<%= @chat.id %>">
   <% @chat.messages.each do |message| %>
     <%= render "messages/message", locals: {message: message} %>
   <% end %>

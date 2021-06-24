@@ -7,7 +7,16 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.save
 
-    ActionCable.server.broadcast("chat_channel_#{@message.chat_id}", {message: @message.content})
+    ActionCable.server.broadcast(
+      "chat_channel_#{@message.chat_id}", 
+      {
+        message: @message.content, 
+        author_id: current_user.id, 
+        username: current_user.username,
+        chat_id: @chat.id,
+        message_id: @message.id
+      }
+    )
   end
 
   def destroy
