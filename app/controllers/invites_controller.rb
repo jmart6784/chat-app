@@ -5,7 +5,7 @@ class InvitesController < ApplicationController
   end
 
   def invitations
-    
+    @invites = current_user.invites_as_guest
   end
 
   def ajax_invite_create
