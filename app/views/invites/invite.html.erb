@@ -2,24 +2,28 @@
 <h3>Chat name: <%= @chat.name %></h3>
 
 <% @friends.each do |friend| %>
-  <%= link_to friend.username, friend %>
+  <div>
+    <%= link_to friend.username, friend %>
 
-  <% if invite_exists?(current_user, friend, @chat) %>
-    <span>Sent</span>
-  <% else %>
-    <%= 
-      link_to "Invite", 
-      ajax_invite_create_path(
-        host_id: current_user.id, 
-        guest_id: friend.id, 
-        chat_id: @chat.id,
-        html_id: "invite-user-#{friend.id}"
-      ), 
-      remote: true,
-      method: :put,
-      id: "invite-user-#{friend.id}"
-    %>
-  <% end %>
+    <span>
+      <% if invite_exists?(current_user, friend, @chat) %>
+        <span>Sent</span>
+      <% else %>
+        <%= 
+          link_to "Invite", 
+          ajax_invite_create_path(
+            host_id: current_user.id, 
+            guest_id: friend.id, 
+            chat_id: @chat.id,
+            html_id: "invite-user-#{friend.id}"
+          ), 
+          remote: true,
+          method: :put,
+          id: "invite-user-#{friend.id}"
+        %>
+      <% end %>
+    </span>
+  </div>
 
   <br /><br />
 <% end %>
