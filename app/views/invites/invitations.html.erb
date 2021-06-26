@@ -1,8 +1,5 @@
 <h1>Invitations</h1>
 
 <% @invites.each do |invite| %>
-  <% chat = Chat.find(invite.chat_id) %>
-  <% host = User.find(invite.host_id) %>
-
-  <p><%= link_to host.username, host %> has invited you to their chat room "<%= chat.name %>"</p>
+  <p><%= link_to invite.host.username, invite.host %> has invited you to their chat room "<%= invite.chat.name %>"</p>
 <% end %>
