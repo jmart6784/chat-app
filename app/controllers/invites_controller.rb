@@ -4,6 +4,10 @@ class InvitesController < ApplicationController
     @friends = friend_list(current_user)
   end
 
+  def invitations
+    
+  end
+
   def ajax_invite_create
     @guest = User.find(params[:guest_id])
     @chat = Chat.find(params[:chat_id])
