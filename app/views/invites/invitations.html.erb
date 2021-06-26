@@ -2,4 +2,13 @@
 
 <% @invites.each do |invite| %>
   <p><%= link_to invite.host.username, invite.host %> has invited you to their chat room "<%= invite.chat.name %>"</p>
+
+  <%= 
+    link_to "Accept", 
+    ajax_joined_chat_create_path(
+      choice: "Accept"
+    ), 
+    method: :put,
+    remote: true
+  %>
 <% end %>

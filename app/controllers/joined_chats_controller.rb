@@ -3,7 +3,11 @@ class JoinedChatsController < ApplicationController
     
   end
 
-  def create
+  def ajax_joined_chat_create
     
+
+    respond_to do |format|
+      format.js {}
+    end
   end
 end
