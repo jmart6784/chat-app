@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   # resources :invites, only: [:create]
-  puts "ajax_invite_create", to: "invites#ajax_invite_create", as: :ajax_invite_create
+  put "ajax_invite_create", to: "invites#ajax_invite_create", as: :ajax_invite_create
   get "invite/:id", to: "invites#invite", as: :invite
   resources :joined_chats, only: [:index, :create]
 end
