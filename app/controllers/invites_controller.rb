@@ -1,6 +1,7 @@
 class InvitesController < ApplicationController
   def invite
     @chat = Chat.find(params[:id])
+    redirect_to root_path unless current_user.hosted_chats.include?(@chat)
     @friends = friend_list(current_user)
   end
 
