@@ -1,1 +1,9 @@
-console.log("ajax_invite_create");
+var link = document.getElementById("<%= params[:html_id] %>");
+
+<% if @invite_created %>
+  link.textContent = "Sent";
+  link.outerHTML = '<span>' + link.textContent + '</span>';
+<% else %>
+  link.textContent = "Add";
+<% end %>
+

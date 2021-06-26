@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?, :full_name
+  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?, :full_name, :invite_exists?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -28,6 +28,14 @@ class ApplicationController < ActionController::Base
 
   def full_name(user)
     "#{user.first_name} #{user.last_name}"
+  end
+
+  def invite_exists?(host, guest, chat)
+    !Invite.find_by(
+      host_id: host.id, 
+      guest_id: guest.id, 
+      chat_id: chat.id
+    ).nil?
   end
 
   protected
