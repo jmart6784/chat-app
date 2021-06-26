@@ -1,5 +1,9 @@
 class InvitesController < ApplicationController
-  def create
+  def invite
+    
+  end
+
+  def ajax_invite_create
     
     respond_to do |format|
       format.js {}

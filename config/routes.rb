@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :destroy]
   end
 
-  resources :invites, only: [:create]
+  # resources :invites, only: [:create]
+  puts "ajax_invite_create", to: "invites#ajax_invite_create", as: :ajax_invite_create
+  get "invite/:id", to: "invites#invite", as: :invite
   resources :joined_chats, only: [:index, :create]
 end

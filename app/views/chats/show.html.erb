@@ -5,6 +5,7 @@
 <% if @chat.host === current_user %>
   <%= link_to "Edit", edit_chat_path(@chat) %>
   <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to "Invite Friends", invite_path(@chat) %>
 <% end %>
 
 <div>
