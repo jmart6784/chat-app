@@ -5,10 +5,12 @@
   <%= link_to friend.username, friend %>
   <%= 
     link_to "Invite", 
-    invite_path(
+    ajax_invite_create_path(
       host_id: current_user.id, 
       guest_id: friend.id, 
       chat_id: @chat.id
-    ) 
+    ), 
+    remote: true,
+    method: :put
   %>
 <% end %>
