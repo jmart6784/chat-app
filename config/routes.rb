@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   end
 
   resources :invites, only: [:create]
+  resources :joined_chats, only: [:index, :create]
 end

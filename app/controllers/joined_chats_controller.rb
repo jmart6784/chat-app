@@ -1,5 +1,9 @@
 class JoinedChatsController < ApplicationController
-  def joined_chats
+  def index
+    
+  end
+
+  def create
     
   end
 end
