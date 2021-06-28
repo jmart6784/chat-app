@@ -35,4 +35,8 @@ class JoinedChatsController < ApplicationController
       format.js {}
     end
   end
+
+  def ajax_joined_chat_destroy
+    
+  end
 end

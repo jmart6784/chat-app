@@ -21,11 +21,11 @@ Rails.application.routes.draw do
     resources :messages, only: [:create, :destroy]
   end
 
-  # resources :invites, only: [:create]
   put "ajax_invite_create", to: "invites#ajax_invite_create", as: :ajax_invite_create
   get "invite/:id", to: "invites#invite", as: :invite
   get "invitations", to: "invites#invitations", as: :invitations
 
   resources :joined_chats, only: [:index]
   put "ajax_joined_chat_create", to: "joined_chats#ajax_joined_chat_create", as: :ajax_joined_chat_create
+  delete "ajax_joined_chat_destroy", to: "joined_chats#ajax_joined_chat_destroy", as: :ajax_joined_chat_destroy
 end
