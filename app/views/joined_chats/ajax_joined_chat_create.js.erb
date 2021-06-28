@@ -1,1 +1,13 @@
-console.log("ajax_joined_chat_create <%= @is_created %>");
+var linkContainer = document.getElementById("<%= params[:html_id] %>");
+
+<% if @is_created %>
+  linkContainer.innerHTML = ``;
+  linkContainer.innerHTML = `
+    <%= link_to "View Chat", @chat %>
+  `;
+<% else %>
+  linkContainer.innerHTML = ``;
+  linkContainer.innerHTML = `
+    <span>Leave Chat</span>
+  `;
+<% end %>
