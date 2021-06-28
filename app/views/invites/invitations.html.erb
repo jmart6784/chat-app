@@ -1,14 +1,31 @@
 <h1>Invitations</h1>
 
 <% @invites.each do |invite| %>
-  <p><%= link_to invite.host.username, invite.host %> has invited you to their chat room "<%= invite.chat.name %>"</p>
+  <span><%= link_to invite.host.username, invite.host %> has invited you to their chat room "<%= invite.chat.name %>"</span>
 
   <%= 
     link_to "Accept", 
     ajax_joined_chat_create_path(
-      choice: "Accept"
+      choice: "Accept",
+      chat_id: invite.chat_id,
+      host_id: invite.host_id,
+      guest_id: invite.guest_id
     ), 
     method: :put,
     remote: true
   %>
+
+  <%= 
+    link_to "Decline", 
+    ajax_joined_chat_create_path(
+      choice: "Decline",
+      chat_id: invite.chat_id,
+      host_id: invite.host_id,
+      guest_id: invite.guest_id
+    ), 
+    method: :put,
+    remote: true
+  %>
+
+  <br /><br />
 <% end %>
