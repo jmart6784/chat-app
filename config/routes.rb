@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 
   resources :joined_chats, only: [:index]
   put "ajax_joined_chat_create", to: "joined_chats#ajax_joined_chat_create", as: :ajax_joined_chat_create
-  delete "ajax_joined_chat_destroy", to: "joined_chats#ajax_joined_chat_destroy", as: :ajax_joined_chat_destroy
+  put "ajax_joined_chat_destroy", to: "joined_chats#ajax_joined_chat_destroy", as: :ajax_joined_chat_destroy
 end

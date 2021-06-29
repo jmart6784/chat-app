@@ -6,6 +6,16 @@
   <%= link_to "Edit", edit_chat_path(@chat) %>
   <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to "Invite Friends", invite_path(@chat) %>
+<% else %>
+  <%= 
+    link_to "Leave", 
+    ajax_joined_chat_destroy_path(
+      chat_id: @chat.id,
+      guest_id: current_user.id
+    ), 
+    method: :put,
+    remote: true
+  %>
 <% end %>
 
 <div>

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?, :full_name, :invite_exists?
+  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?, :full_name, :invite_exists?, :chat_joined?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -36,6 +36,10 @@ class ApplicationController < ActionController::Base
       guest_id: guest.id, 
       chat_id: chat.id
     ).nil?
+  end
+
+  def chat_joined?(user, chat)
+    user.joined_chats.include?(chat)
   end
 
   protected
