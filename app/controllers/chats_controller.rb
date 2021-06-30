@@ -7,6 +7,12 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
+    joined_chat = JoinedChat.find_by(
+      user_id: current_user.id, 
+      chat_id: @chat.id
+    )
+    redirect_to root_path unless current_user.joined_chats.include?(joined_chat)
+    
     @message = Message.new
   end
 
