@@ -5,6 +5,14 @@ class ChatsController < ApplicationController
     @chats = Chat.all
   end
 
+  def hosted_chats
+    @chats = current_user.hosted_chats
+  end
+
+  def joined_chats
+    @chats = current_user.chats
+  end
+
   def show
     @chat = Chat.find(params[:id])
     redirect_to root_path unless chat_joined?(current_user, @chat)
