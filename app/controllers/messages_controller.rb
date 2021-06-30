@@ -2,8 +2,10 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:destroy]
 
   def create
-    return unless message_params[:user_id].to_i === current_user.id
     @chat = Chat.find(message_params[:chat_id])
+
+    return unless message_params[:user_id].to_i === current_user.id || chat_joined?(current_user, @chat)
+
     @message = Message.new(message_params)
     @message.save
 
