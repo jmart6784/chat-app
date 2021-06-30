@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def chat_joined?(user, chat)
-    user.joined_chats.include?(chat)
+    user.joined_chats.include?(chat) || user.hosted_chats.include?(chat) ? true : false
   end
 
   protected
