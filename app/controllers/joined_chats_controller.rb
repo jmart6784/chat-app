@@ -1,8 +1,4 @@
 class JoinedChatsController < ApplicationController
-  def index
-    
-  end
-
   def ajax_joined_chat_create
     @host = User.find(params[:host_id])
     @guest = User.find(params[:guest_id])
