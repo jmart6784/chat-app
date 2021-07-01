@@ -1,0 +1,9 @@
+<h1>Joined Chats</h1>
+
+<% if @chats.count === 0 %>
+  <p>No one has invited you to a chat yet :(</p>
+<% else %>
+  <% @chats.each do |chat| %>
+    <%= render "chats/chat_item", locals: {chat: chat} %>
+  <% end %>
+<% end %>
