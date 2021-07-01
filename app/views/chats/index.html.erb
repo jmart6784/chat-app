@@ -1,14 +1,5 @@
 <h1>Chats index</h1>
 
 <% @chats.each do |chat| %>
-  <div>
-    <%= link_to chat.name, chat %> 
-    <span>host:</span> <%= link_to chat.host.username, chat.host %>
-
-    <% if chat.host === current_user %>
-      <%= link_to "Edit", edit_chat_path(chat) %>
-      <%= link_to "Delete", chat, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-  </div>
-  <br />
+  <%= render "chats/chat_item", locals: {chat: chat} %>
 <% end %>
