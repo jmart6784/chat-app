@@ -2,6 +2,8 @@
 <h3>Chat name: <%= @chat.name %></h3>
 
 <% @friends.each do |friend| %>
+  <% next if chat_joined?(friend, @chat) %>
+
   <div>
     <%= link_to friend.username, friend %>
 
