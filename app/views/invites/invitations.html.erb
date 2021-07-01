@@ -1,37 +1,45 @@
 <h1>Invitations</h1>
 
-<% @invites.each do |invite| %>
-  <div>
-    <span><%= link_to invite.host.username, invite.host %> has invited you to their chat room "<%= invite.chat.name %>"</span>
+<div id="invites-container">
+  <% if @invites.count === 0 %>
+    No invites
+  <% else %>
+    <% @invites.each do |invite| %>
+      <div id="<%= "parent-invite-div-#{invite.id}" %>">
+        <span><%= link_to invite.host.username, invite.host %> has invited you to their chat room "<%= invite.chat.name %>"</span>
 
-    <span id="invite-<%= invite.id %>">
-      <%= 
-        link_to "Accept", 
-        ajax_joined_chat_create_path(
-          choice: "Accept",
-          chat_id: invite.chat_id,
-          host_id: invite.host_id,
-          guest_id: invite.guest_id,
-          html_id: "invite-#{invite.id}"
-        ), 
-        method: :put,
-        remote: true
-      %>
+        <span id="invite-<%= invite.id %>">
+          <%= 
+            link_to "Accept", 
+            ajax_joined_chat_create_path(
+              choice: "Accept",
+              chat_id: invite.chat_id,
+              host_id: invite.host_id,
+              guest_id: invite.guest_id,
+              html_id: "invite-#{invite.id}",
+              parent_html_id: "parent-invite-div-#{invite.id}"
+            ), 
+            method: :put,
+            remote: true
+          %>
 
-      <%= 
-        link_to "Decline", 
-        ajax_joined_chat_create_path(
-          choice: "Decline",
-          chat_id: invite.chat_id,
-          host_id: invite.host_id,
-          guest_id: invite.guest_id,
-          html_id: "invite-#{invite.id}"
-        ), 
-        method: :put,
-        remote: true
-      %>
-    </span>
-  </div>
+          <%= 
+            link_to "Decline", 
+            ajax_joined_chat_create_path(
+              choice: "Decline",
+              chat_id: invite.chat_id,
+              host_id: invite.host_id,
+              guest_id: invite.guest_id,
+              html_id: "invite-#{invite.id}",
+              parent_html_id: "parent-invite-div-#{invite.id}"
+            ), 
+            method: :put,
+            remote: true
+          %>
+        </span>
+      </div>
 
-  <br /><br />
-<% end %>
+      <br /><br />
+    <% end %>
+  <% end %>
+</div>

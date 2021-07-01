@@ -1,4 +1,6 @@
 var linkContainer = document.getElementById("<%= params[:html_id] %>");
+var parentDiv = document.getElementById("<%= params[:parent_html_id] %>");
+var invitesContainer = document.getElementById("invites-container");
 
 <% if @is_created %>
   linkContainer.innerHTML = ``;
@@ -6,8 +8,10 @@ var linkContainer = document.getElementById("<%= params[:html_id] %>");
     <%= link_to "View Chat", @chat %>
   `;
 <% else %>
-  linkContainer.innerHTML = ``;
-  linkContainer.innerHTML = `
-    <span>Leave Chat</span>
-  `;
+  if (parseInt("<%= current_user.invites_as_guest.count %>") === 0) {
+    invitesContainer.innerHTML = "";
+    invitesContainer.innerHTML = "No invites";
+  } else {
+    parentDiv.remove();
+  }
 <% end %>
