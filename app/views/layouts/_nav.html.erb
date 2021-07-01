@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
 <div>
+  <%= user_avatar(current_user) %>
   <span><%= full_name(current_user) %></span>
   <%= link_to "Home", root_path %>
   <% if false %>

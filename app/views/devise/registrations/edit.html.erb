@@ -4,7 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= user_avatar(current_user, size=40, id = "", class_name="") %>
+    <%= user_avatar(current_user) %>
     <%= f.file_field :avatar %>
   </div>
 
