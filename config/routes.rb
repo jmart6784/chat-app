@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "users#index"
+  root to: "chats#joined_chats"
   resources :users, only: [:index, :show]
 
   resources :friend_requests, only: [:index, :update] do
