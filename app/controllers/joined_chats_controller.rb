@@ -32,17 +32,21 @@ class JoinedChatsController < ApplicationController
     end
   end
 
-  def destroy
-    @chat = Chat.find(params[:id])
+  def ajax_joined_chat_destroy
+    # @chat = Chat.find(params[:id])
 
-    @joined_chat = JoinedChat.find_by(
-      user_id: current_user.id, 
-      chat_id: @chat.id
-    )
+    # @joined_chat = JoinedChat.find_by(
+    #   user_id: current_user.id, 
+    #   chat_id: @chat.id
+    # )
 
-    return unless chat_joined?(current_user, @joined_chat)
+    # return unless chat_joined?(current_user, @joined_chat)
 
-    @joined_chat.destroy
-    redirect_to chats_path
+    # @joined_chat.destroy
+    # redirect_to chats_path
+
+    respond_to do |format|
+      format.js {}
+    end
   end
 end

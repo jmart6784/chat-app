@@ -7,7 +7,7 @@
   <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to "Invite Friends", invite_path(@chat) %>
 <% else %>
-  <%= link_to "Leave", joined_chat_path(@chat), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to "Leave Ajax", ajax_joined_chat_destroy_path, method: :put, remote: true %>
 <% end %>
 
 <% unless @chat.users.count === 0 %>

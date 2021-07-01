@@ -27,6 +27,6 @@ Rails.application.routes.draw do
   get "invite/:id", to: "invites#invite", as: :invite
   get "invitations", to: "invites#invitations", as: :invitations
 
-  resources :joined_chats, only: [:destroy]
   put "ajax_joined_chat_create", to: "joined_chats#ajax_joined_chat_create", as: :ajax_joined_chat_create
+  put "ajax_joined_chat_destroy", to: "joined_chats#ajax_joined_chat_destroy", as: :ajax_joined_chat_destroy
 end
