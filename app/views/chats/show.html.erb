@@ -7,15 +7,44 @@
   <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
   <%= link_to "Invite Friends", invite_path(@chat) %>
 <% else %>
-  <%= link_to "Leave Ajax", ajax_joined_chat_destroy_path, method: :put, remote: true %>
+  <%= 
+    link_to "Leave", 
+    ajax_joined_chat_destroy_path(
+      chat_id: @chat.id,
+      guest_id: current_user.id,
+      host_id: @chat.host.id,
+      choice: "leave"
+    ), 
+    method: :put, 
+    remote: true, 
+    data: { confirm: "You won't be able to join back unless invited." }
+  %>
 <% end %>
 
 <% unless @chat.users.count === 0 %>
   <h3>Users joined:</h3>
 
   <ul>
+    <li><%= link_to @chat.host.username, @chat.host %></li>
     <% @chat.users.each do |user| %>
-      <li><%= link_to user.username, user %></li>
+      <li id=<%= "joined-user-#{user.id}" %>>
+        <%= link_to user.username, user %>
+          <% if current_user === @chat.host %>
+            <%= 
+              link_to "Kick", 
+              ajax_joined_chat_destroy_path(
+                chat_id: @chat.id,
+                guest_id: user.id,
+                host_id: @chat.host.id,
+                choice: "kick",
+                parent_html_id: "joined-user-#{user.id}"
+              ), 
+              method: :put, 
+              remote: true, 
+              data: { confirm: "Are you sure you want to kick out #{user.username}?" }
+            %>
+          <% end %>
+      </li>
     <% end %>
   </ul>
 <% end %>
