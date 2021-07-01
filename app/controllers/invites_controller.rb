@@ -15,7 +15,7 @@ class InvitesController < ApplicationController
 
     @invite_created = false
 
-    if !invite_exists?(current_user, @guest, @chat) && current_user.hosted_chats.include?(@chat) && params[:host_id].to_i === current_user.id
+    if !invite_exists?(current_user, @guest, @chat) && current_user.hosted_chats.include?(@chat) && params[:host_id].to_i === current_user.id && is_friend?(current_user, @guest)
       @invite_created = true
       Invite.create(
         host_id: current_user.id, 
