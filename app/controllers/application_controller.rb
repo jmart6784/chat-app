@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?, :full_name, :invite_exists?, :chat_joined?
+  helper_method :friend_list, :is_friend?, :request_pending?, :response_pending?, :full_name, :invite_exists?, :chat_joined?, :online?
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -45,6 +45,16 @@ class ApplicationController < ActionController::Base
     joined = true if user.chats.include?(chat)
 
     return joined
+  end
+
+  def online?(user)
+    online = OnlineStatus.find_by(user_id: user.id)
+
+    if online.status === "online"
+      true
+    elsif online.status === "offline"
+      false
+    end
   end
 
   protected

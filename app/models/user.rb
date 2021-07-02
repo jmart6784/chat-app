@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  after_create :create_online_status
+
   has_one_attached :avatar, dependent: :destroy
   validate :avatar_type
 
@@ -72,5 +74,9 @@ class User < ApplicationRecord
     else
       'default_profile.jpg'
     end
+  end
+
+  def create_online_status
+    OnlineStatus.create(user_id: self.id, status: "offline") 
   end
 end
