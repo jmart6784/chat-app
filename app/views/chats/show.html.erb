@@ -24,14 +24,16 @@
 <% unless @chat.users.count === 0 %>
   <h3>Users joined:</h3>
 
-  <ul>
-    <li>
-      <%= user_avatar(@chat.host, 40, "", "activity-status activity-user-#{@chat.host.id}") %> 
+  <div>
+    <div>
+      <span class="<%= "status-dot user-#{@chat.host.id}-status" %>">•</span>
+      <%= user_avatar(@chat.host) %> 
       <%= link_to @chat.host.username, @chat.host %>
-    </li>
+    </div>
     <% @chat.users.each do |user| %>
-      <li id=<%= "joined-user-#{user.id}" %>>
-        <%= user_avatar(user, 40, "", "activity-status activity-user-#{user.id}") %>
+      <div id=<%= "joined-user-#{user.id}" %>>
+        <span class="<%= "status-dot user-#{user.id}-status" %>">•</span>
+        <%= user_avatar(user) %>
         <%= link_to user.username, user %>
           <% if current_user === @chat.host %>
             <%= 
@@ -48,9 +50,9 @@
               data: { confirm: "Are you sure you want to kick out #{user.username}?" }
             %>
           <% end %>
-      </li>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
 <div>

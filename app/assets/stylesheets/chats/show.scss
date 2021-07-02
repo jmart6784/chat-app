@@ -1,0 +1,7 @@
+.status-dot {
+  font-size: 50px;
+  color: rgb(109, 109, 109);
+  &.online {
+    color: rgb(60, 255, 0);
+  }
+}
