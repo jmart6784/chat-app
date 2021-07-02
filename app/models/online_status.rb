@@ -1,0 +1,2 @@
+class OnlineStatus < ApplicationRecord
+end
