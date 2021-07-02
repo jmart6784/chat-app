@@ -53,6 +53,8 @@ class User < ApplicationRecord
   has_many :joined_chats, dependent: :destroy
   has_many :chats, through: :joined_chats, dependent: :destroy
 
+  has_one :online_status
+
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :username, uniqueness: true, presence: true, length: {minimum: 4, maximum: 16}, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }
 
