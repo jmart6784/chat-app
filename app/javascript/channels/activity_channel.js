@@ -3,6 +3,8 @@ import consumer from "./consumer"
 consumer.subscriptions.create("ActivityChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
+    this.perform("appear");
+    console.log("connected to activity channel");
   },
 
   disconnected() {
@@ -11,5 +13,6 @@ consumer.subscriptions.create("ActivityChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    console.log(data);
   }
 });
