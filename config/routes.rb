@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "registrations"
+  }
+  
   root to: "chats#joined_chats"
   resources :users, only: [:index, :show]
 
