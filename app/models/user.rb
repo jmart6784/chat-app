@@ -7,7 +7,6 @@ class User < ApplicationRecord
   after_create :create_online_status
 
   has_one_attached :avatar, dependent: :destroy
-  validate :avatar_type
 
   has_many :requests_as_requestor, 
     foreign_key: :requestor_id, 
@@ -55,7 +54,7 @@ class User < ApplicationRecord
   has_many :joined_chats, dependent: :destroy
   has_many :chats, through: :joined_chats, dependent: :destroy
 
-  has_one :online_status
+  has_one :online_status, dependent: :destroy
 
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\z/
   validates :username, uniqueness: true, presence: true, length: {minimum: 4, maximum: 16}, format: { with: VALID_USERNAME_REGEX }, uniqueness: { case_sensitive: false }
@@ -63,6 +62,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true, length: { minimum: 1, maximum: 60 }
 
   validates :bio, length: { maximum: 150 }
+  
+  validate :avatar_type
 
   private
 

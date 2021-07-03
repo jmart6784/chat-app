@@ -27,16 +27,14 @@
   <div>
     <div>
       <% host_status = @chat.host.online_status %>
-      <span class="<%= "status-dot user-#{@chat.host.id}-status #{host_status.status}" %>">• (<%= host_status.status %>)</span>
+      <span class="<%= "status-dot user-#{@chat.host.id}-status #{host_status.status}" %>">•</span>
       <%= user_avatar(@chat.host) %> 
       <%= link_to @chat.host.username, @chat.host %>
     </div>
 
     <% @chat.users.each do |user| %>
-      <% dot_class_name = user.online_status.status === "online" ? "online" : "offline" %>
-
       <div id=<%= "joined-user-#{user.id}" %>>
-        <span class="<%= "status-dot user-#{user.id}-status #{dot_class_name}" %>">• (<%= dot_class_name %>)</span>
+        <span class="<%= "status-dot user-#{user.id}-status #{user.online_status.status}" %>">•</span>
         <%= user_avatar(user) %>
         <%= link_to user.username, user %>
           <% if current_user === @chat.host %>
