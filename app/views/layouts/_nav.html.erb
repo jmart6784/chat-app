@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <div>
+  <div id="nav-bar">
     <%= user_avatar(current_user) %>
     <span><%= full_name(current_user) %></span>
     <%= link_to "Home", root_path %>
