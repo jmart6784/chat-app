@@ -3,38 +3,44 @@
 
 <% already_joined_count = 0 %>
 
-<% @friends.each do |friend| %>
-  <% already_joined_count += 1 if chat_joined?(friend, @chat) %>
-  <% next if chat_joined?(friend, @chat) %>
-
+<% if @friends.count === 0 %>
   <div>
-    <%= link_to friend.username, friend %>
-
-    <span>
-      <% if invite_exists?(current_user, friend, @chat) %>
-        <span>Sent</span>
-      <% else %>
-        <%= 
-          link_to "Invite", 
-          ajax_invite_create_path(
-            host_id: current_user.id, 
-            guest_id: friend.id, 
-            chat_id: @chat.id,
-            html_id: "invite-user-#{friend.id}"
-          ), 
-          remote: true,
-          method: :put,
-          id: "invite-user-#{friend.id}"
-        %>
-      <% end %>
-    </span>
+    <h3>No friends :(</h3>
   </div>
+<% else %>
+  <% @friends.each do |friend| %>
+    <% already_joined_count += 1 if chat_joined?(friend, @chat) %>
+    <% next if chat_joined?(friend, @chat) %>
 
-  <br /><br />
-<% end %>
+    <div>
+      <%= link_to friend.username, friend %>
 
-<% if @friends.count === already_joined_count %>
-  <div>
-    <h3>No more friends to invite</h3>
-  </div>
+      <span>
+        <% if invite_exists?(current_user, friend, @chat) %>
+          <span>Sent</span>
+        <% else %>
+          <%= 
+            link_to "Invite", 
+            ajax_invite_create_path(
+              host_id: current_user.id, 
+              guest_id: friend.id, 
+              chat_id: @chat.id,
+              html_id: "invite-user-#{friend.id}"
+            ), 
+            remote: true,
+            method: :put,
+            id: "invite-user-#{friend.id}"
+          %>
+        <% end %>
+      </span>
+    </div>
+
+    <br /><br />
+  <% end %>
+
+  <% if @friends.count === already_joined_count %>
+    <div>
+      <h3>No more friends to invite</h3>
+    </div>
+  <% end %>
 <% end %>
