@@ -1,25 +1,25 @@
 <% if user_signed_in? %>
-<div>
-  <%= user_avatar(current_user) %>
-  <span><%= full_name(current_user) %></span>
-  <%= link_to "Home", root_path %>
-  <% if false %>
-  <%= link_to "Message", ajax_create_chat_path(id: @user), method: :put, remote: true %>
-  <% end %>
-  <%= link_to "Create Chat Room", new_chat_path %>
-  <%= link_to "Chats", chats_path %>
-  <%= link_to "Users", users_path %>
-  <%= link_to "Hosted Chats", hosted_chats_path %>
-  <%= link_to "Joined Chats", joined_chats_path %>
-  <%= link_to "Friends", friends_path(current_user.id) %>
-  <%= link_to "Friend Requests", friend_requests_path %>
-  <%= link_to "Invitations", invitations_path %>
-  <%= link_to "Settings", edit_user_registration_path %>
-  <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-</div>
+  <div>
+    <%= user_avatar(current_user) %>
+    <span><%= full_name(current_user) %></span>
+    <%= link_to "Home", root_path %>
+    <% if false %>
+    <%= link_to "Message", ajax_create_chat_path(id: @user), method: :put, remote: true %>
+    <% end %>
+    <%= link_to "Create Chat Room", new_chat_path %>
+    <%= link_to "Chats", chats_path %>
+    <%= link_to "Users", users_path %>
+    <%= link_to "Hosted Chats", hosted_chats_path %>
+    <%= link_to "Joined Chats", joined_chats_path %>
+    <%= link_to "Friends", friends_path(current_user.id) %>
+    <%= link_to "Friend Requests", friend_requests_path %>
+    <%= link_to "Invitations", invitations_path %>
+    <%= link_to "Settings", edit_user_registration_path %>
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+  </div>
 <% else %>
-<div>
-  <%= link_to "Log in", new_session_path(resource_name) %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %>
-</div>
+  <div>
+    <%= link_to "Log in", new_session_path(resource_name) %>
+    <%= link_to "Sign up", new_registration_path(resource_name) %>
+  </div>
 <% end %>

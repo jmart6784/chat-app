@@ -2,7 +2,7 @@ class ChatsController < ApplicationController
   before_action :set_chat, only: [:edit, :update, :destroy]
 
   def index
-    @chats = Chat.all
+    @chats = current_user.hosted_chats + current_user.chats
   end
 
   def hosted_chats
