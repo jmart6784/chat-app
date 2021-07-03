@@ -1,5 +1,7 @@
 <h1>Friends</h1>
 
+<%= link_to "Find Friends", users_path %>
+
 <% @friends.each do |friend| %>
   <%= render "global_partials/user_request_options", locals: {user: friend} %>
 <% end %>

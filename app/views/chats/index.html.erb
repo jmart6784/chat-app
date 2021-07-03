@@ -1,5 +1,8 @@
 <h1>Chats index</h1>
 
+<%= link_to "Hosted Chats", hosted_chats_path %>
+<%= link_to "Joined Chats", joined_chats_path %>
+
 <% @chats.each do |chat| %>
   <%= render "chats/chat_item", locals: {chat: chat} %>
 <% end %>

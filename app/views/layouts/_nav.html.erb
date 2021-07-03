@@ -1,21 +1,46 @@
 <% if user_signed_in? %>
   <div id="nav-bar">
-    <%= user_avatar(current_user) %>
-    <span><%= full_name(current_user) %></span>
-    <%= link_to "Home", root_path %>
-    <% if false %>
-    <%= link_to "Message", ajax_create_chat_path(id: @user), method: :put, remote: true %>
-    <% end %>
-    <%= link_to "Create Chat Room", new_chat_path %>
-    <%= link_to "Chats", chats_path %>
-    <%= link_to "Users", users_path %>
-    <%= link_to "Hosted Chats", hosted_chats_path %>
-    <%= link_to "Joined Chats", joined_chats_path %>
-    <%= link_to "Friends", friends_path(current_user.id) %>
-    <%= link_to "Friend Requests", friend_requests_path %>
-    <%= link_to "Invitations", invitations_path %>
-    <%= link_to "Settings", edit_user_registration_path %>
-    <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+    <div id="nav-first-div">
+      <%= link_to root_path, id: "nav-logo" do %>
+        <i class="fas fa-globe nav-icon"></i> Quick Chats
+      <% end %>
+    </div>
+
+    <div id="nav-second-div">
+      <%= link_to new_chat_path, class: "nav-link" do %>
+        <i class="fas fa-comment-medical nav-icon"></i> Create
+      <% end %>
+
+      <%= link_to chats_path, class: "nav-link" do %>
+        <i class="fas fa-comments nav-icon"></i> Chats
+      <% end %>
+
+      <%= link_to friends_path(current_user.id), class: "nav-link" do %>
+        <i class="fas fa-users nav-icon"></i> Friends
+      <% end %>
+
+      <%= link_to friend_requests_path, class: "nav-link" do %>
+        <i class="fas fa-user-plus nav-icon"></i> Friend Requests
+      <% end %>
+    
+      <%= link_to invitations_path, class: "nav-link" do %>
+        <i class="fas fa-envelope nav-icon"></i> Invites
+      <% end %>
+
+      <div class="dropdown">
+        <%= user_avatar(current_user, 40, "", "nav-avatar drop-btn") %>
+
+        <div class="drop-content">
+          <%= link_to edit_user_registration_path do %>
+            <i class="fas fa-cog nav-icon"></i> Settings
+          <% end %>
+
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt nav-icon"></i> Log out
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 <% else %>
   <div>

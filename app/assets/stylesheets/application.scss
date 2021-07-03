@@ -22,5 +22,23 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 @import "@fortawesome/fontawesome-free/scss/v4-shims";
 
 * {
+  font-family: "Oxygen", sans-serif;
   box-sizing: border-box;
+  outline: none;
+}
+
+h1, h2, h3,
+h4, h5, h6,
+p, a, th, tr,
+label, li, i,
+em, span, div {
+  color: white;
+}
+
+body {
+  background-color: rgb(19, 19, 19);
+}
+
+.med-blue {
+  background-color: rgb(0, 155, 202);
 }
