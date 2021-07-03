@@ -1,7 +1,10 @@
 <h1>Invite Friends</h1>
-<h3>Chat name: <%= @chat.name %></h3>
+<h2><%= @chat.name %></h2>
+
+<% already_joined_count = 0 %>
 
 <% @friends.each do |friend| %>
+  <% already_joined_count += 1 if chat_joined?(friend, @chat) %>
   <% next if chat_joined?(friend, @chat) %>
 
   <div>
@@ -28,4 +31,10 @@
   </div>
 
   <br /><br />
+<% end %>
+
+<% if @friends.count === already_joined_count %>
+  <div>
+    <h3>No more friends to invite</h3>
+  </div>
 <% end %>
