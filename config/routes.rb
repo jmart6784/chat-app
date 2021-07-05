@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     registrations: "registrations"
   }
   
-  root to: "chats#joined_chats"
+  root to: "chats#index"
   resources :users, only: [:index, :show]
 
   resources :friend_requests, only: [:index, :update] do
