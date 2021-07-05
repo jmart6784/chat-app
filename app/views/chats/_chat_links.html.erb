@@ -1,5 +1,19 @@
 <div class="chat-index-links">
-  <%= link_to "All chats", chats_path %>
-  <%= link_to "Hosted Chats", hosted_chats_path %>
-  <%= link_to "Joined Chats", joined_chats_path %>
+  <% if params[:controller] === "chats" %>
+
+    <% if params[:action] === "index" %>
+        <p class="chat-links-active">All</p>
+        <%= link_to "Hosted", hosted_chats_path, class: "chat-links-inactive" %>
+        <%= link_to "Joined", joined_chats_path, class: "chat-links-inactive" %>
+    <% elsif params[:action] === "hosted_chats" %>
+      <%= link_to "All", chats_path, class: "chat-links-inactive" %>
+      <p class="chat-links-active">Hosted</p>
+      <%= link_to "Joined", joined_chats_path, class: "chat-links-inactive" %>
+    <% elsif params[:action] === "joined_chats" %>
+      <%= link_to "All", chats_path, class: "chat-links-inactive" %>
+      <%= link_to "Hosted", hosted_chats_path, class: "chat-links-inactive" %>
+      <p class="chat-links-active">Joined</p>
+    <% end %>
+
+  <% end %>
 </div>

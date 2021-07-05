@@ -1,0 +1,26 @@
+$light-blue: rgb(90, 195, 226);
+$light-gray: rgb(151, 151, 151);
+
+.chat-index-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: fit-content;
+  margin: 0 auto;
+  column-gap: 125px;
+}
+
+$fsize: 22px;
+
+.chat-links-active {
+  border-bottom: 3px solid $light-blue;
+  width: fit-content;
+  font-size: $fsize;
+}
+
+.chat-links-inactive {
+  border-bottom: 3px solid $light-gray;
+  color: $light-gray;
+  width: fit-content;
+  font-size: $fsize;
+}

@@ -1,5 +1,7 @@
 <h1>Hosted Chats</h1>
 
+<%= render "chats/chat_links" %>
+
 <% if @chats.count === 0 %>
   <p>You haven't created a chat yet, click <%= link_to "here", new_chat_path %></p>
 <% else %>
