@@ -1,0 +1,22 @@
+.chats-items-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 50%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.no-chats-div {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+
+.no-chats-p {
+  font-size: 30px;
+  font-weight: 100;
+}

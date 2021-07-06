@@ -1,7 +1,13 @@
-<h1>Chats index</h1>
-
 <%= render "chats/chat_links" %>
 
-<% @chats.each do |chat| %>
-  <%= render "chats/chat_item", locals: {chat: chat} %>
+<% if @chats.length === 0 %>
+  <div class="no-chats-div">
+    <p class="no-chats-p">Create a new chat <%= link_to "here", new_chat_path %>.</p>
+  </div>
+<% else %>
+  <div class="chats-items-container">
+    <% @chats.each do |chat| %>
+      <%= render "chats/chat_item", locals: {chat: chat} %>
+    <% end %>
+  </div>
 <% end %>

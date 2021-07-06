@@ -7,12 +7,12 @@
     </div>
 
     <div id="nav-second-div">
-      <%= link_to new_chat_path, class: "nav-link" do %>
-        <i class="fas fa-comment-medical nav-icon"></i> Create
-      <% end %>
-
       <%= link_to chats_path, class: "nav-link" do %>
         <i class="fas fa-comments nav-icon"></i> Chats
+      <% end %>
+
+      <%= link_to new_chat_path, class: "nav-link" do %>
+        <i class="fas fa-comment-medical nav-icon"></i> Create
       <% end %>
 
       <%= link_to friends_path(current_user.id), class: "nav-link" do %>

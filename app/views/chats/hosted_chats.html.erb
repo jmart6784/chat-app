@@ -1,11 +1,13 @@
-<h1>Hosted Chats</h1>
-
 <%= render "chats/chat_links" %>
 
-<% if @chats.count === 0 %>
-  <p>You haven't created a chat yet, click <%= link_to "here", new_chat_path %></p>
+<% if @chats.length === 0 %>
+  <div class="no-chats-div">
+    <p class="no-chats-p">Create a new chat <%= link_to "here", new_chat_path %>.</p>
+  </div>
 <% else %>
-  <% @chats.each do |chat| %>
-    <%= render "chats/chat_item", locals: {chat: chat} %>
-  <% end %>
+  <div class="chats-items-container">
+    <% @chats.each do |chat| %>
+      <%= render "chats/chat_item", locals: {chat: chat} %>
+    <% end %>
+  </div>
 <% end %>

@@ -1,0 +1,43 @@
+$blue: rgb(0, 155, 202);
+
+.chat-item-div {
+  border: 0.5px solid blue;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 12fr 1fr;
+  background-color: $blue;
+  padding: 5px 0 5px 0;
+  border-radius: 5px;
+}
+
+.chat-item-avatar {
+  border-radius: 100%;
+}
+
+.chat-item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  width: 100%;
+}
+
+.chat-item-name {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.chat-item-user-count {
+  font-size: 14px;
+  margin-right: 3px;
+}
+
+.chat-item-host {
+  font-size: 13px;
+}
+
+.chat-item-dots {
+  font-size: 25px;
+}

@@ -1,12 +1,24 @@
 <% chat = locals[:chat] %>
 
-<div>
-  <%= link_to chat.name, chat %> 
-  <span>host:</span> <%= link_to chat.host.username, chat.host %>
-
-  <% if chat.host === current_user %>
-    <%= link_to "Edit", edit_chat_path(chat) %>
-    <%= link_to "Delete", chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="chat-item-div">
+  <%= link_to chat.host do %>
+    <%= user_avatar(chat.host, 55, "", "chat-item-avatar") %>
   <% end %>
+
+  <div class="chat-item-details div-link" onclick='location.href="<%= chat_path(chat) %>";'>
+    <%= link_to chat.name, chat, class: "chat-item-name" %>
+    <p class="chat-item-user-count"><i class="fas fa-users chat-item-user-count"></i> <%= chat.users.count %></p>
+    <p class="chat-item-host">Host: <%= chat.host.username %></p>
+  </div>
+
+  <div class="dropdown">
+    <% if chat.host === current_user %>
+      <i class="fas fa-ellipsis-h drop-btn chat-item-dots"></i>
+
+      <div class="drop-content">
+        <%= link_to "Edit", edit_chat_path(chat) %>
+        <%= link_to "Delete", chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<br />

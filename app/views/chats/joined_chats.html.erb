@@ -1,11 +1,14 @@
-<h1>Joined Chats</h1>
-
 <%= render "chats/chat_links" %>
 
-<% if @chats.count === 0 %>
-  <p>No one has invited you to a chat yet :(</p>
+<% if @chats.length === 0 %>
+  <div class="no-chats-div">
+    <p class="no-chats-p">No one has invite you to chat yet.</p>
+    <p class="no-chats-p"><%= link_to "Find Friends", users_path %></p>
+  </div>
 <% else %>
-  <% @chats.each do |chat| %>
-    <%= render "chats/chat_item", locals: {chat: chat} %>
-  <% end %>
+  <div class="chats-items-container">
+    <% @chats.each do |chat| %>
+      <%= render "chats/chat_item", locals: {chat: chat} %>
+    <% end %>
+  </div>
 <% end %>
