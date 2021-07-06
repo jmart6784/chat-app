@@ -7,17 +7,22 @@
 
   <div class="chat-item-details div-link" onclick='location.href="<%= chat_path(chat) %>";'>
     <%= link_to chat.name, chat, class: "chat-item-name" %>
-    <p class="chat-item-user-count"><i class="fas fa-users chat-item-user-count"></i> <%= chat.users.count %></p>
     <p class="chat-item-host">Host: <%= chat.host.username %></p>
+    <p class="chat-item-user-count"><i class="fas fa-users chat-item-user-count"></i> <%= chat.users.count %></p>
   </div>
 
-  <div class="dropdown">
+  <div class="chat-item-dropdown">
     <% if chat.host === current_user %>
-      <i class="fas fa-ellipsis-h drop-btn chat-item-dots"></i>
+      <i class="fas fa-ellipsis-h chat-item-dots"></i>
 
-      <div class="drop-content">
-        <%= link_to "Edit", edit_chat_path(chat) %>
-        <%= link_to "Delete", chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="chat-opt-drop-content">
+        <%= link_to edit_chat_path(chat) do %>
+          <i class="fas fa-pen nav-icon"></i> Edit
+        <% end %>
+
+        <%= link_to chat, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash nav-icon"></i> Delete
+        <% end %>
       </div>
     <% end %>
   </div>

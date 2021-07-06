@@ -1,13 +1,13 @@
 $blue: rgb(0, 155, 202);
+$light-blue: rgb(90, 195, 226);
 
 .chat-item-div {
-  border: 0.5px solid blue;
   display: grid;
   align-items: center;
   justify-items: center;
   grid-template-columns: 1fr 12fr 1fr;
   background-color: $blue;
-  padding: 5px 0 5px 0;
+  padding: 10px 0 10px 0;
   border-radius: 5px;
 }
 
@@ -21,6 +21,7 @@ $blue: rgb(0, 155, 202);
   justify-content: center;
   row-gap: 10px;
   width: 100%;
+  padding-left: 10px;
 }
 
 .chat-item-name {
@@ -40,4 +41,44 @@ $blue: rgb(0, 155, 202);
 
 .chat-item-dots {
   font-size: 25px;
+}
+
+.chat-item-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 5px 0 5px 0;
+}
+
+.chat-opt-drop-content {
+  display: none;
+  position: absolute;
+  width: 100px;
+  z-index: 2;
+  transform: translate(-50%, 1%);
+  background-color: white;
+}
+
+.chat-opt-drop-content a {
+  display: block;
+  padding: 10px;
+  color: $blue;
+  text-decoration: none;
+}
+
+.chat-opt-drop-content i {
+  color: $blue;
+}
+
+.chat-opt-drop-content a:hover {
+  background-color: $light-blue;
+  color: white;
+}
+
+.chat-opt-drop-content a:hover .nav-icon {
+  color: white;
+}
+
+.chat-item-dropdown:hover .chat-opt-drop-content {
+  display: block;
 }
