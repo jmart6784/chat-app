@@ -25,3 +25,71 @@ $fsize: 22px;
   width: fit-content;
   font-size: $fsize;
 }
+
+@media only screen and (max-width: 1000px) {
+  .chat-index-links {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .chat-index-links {
+    width: 60%;
+  }
+
+  .chat-links-active {
+    font-size: 20px;
+  }
+  
+  .chat-links-inactive {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .chat-links-active {
+    font-size: 18px;
+  }
+  
+  .chat-links-inactive {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .chat-index-links {
+    column-gap: 75px;
+  }
+
+  .chat-links-active {
+    font-size: 17px;
+  }
+  
+  .chat-links-inactive {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .chat-links-active {
+    font-size: 17px;
+  }
+  
+  .chat-links-inactive {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .chat-index-links {
+    column-gap: 50px;
+  }
+
+  .chat-links-active {
+    font-size: 16px;
+  }
+  
+  .chat-links-inactive {
+    font-size: 16px;
+  }
+}

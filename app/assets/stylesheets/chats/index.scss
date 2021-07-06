@@ -20,3 +20,51 @@
   font-size: 30px;
   font-weight: 100;
 }
+
+@media only screen and (max-width: 1700px) {
+  .chats-items-container {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .chats-items-container {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .chats-items-container {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .chats-items-container {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .chats-items-container {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .chats-items-container {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .chats-items-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .chats-items-container {
+    width: 100%;
+  }
+}
