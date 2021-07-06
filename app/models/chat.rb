@@ -9,6 +9,6 @@ class Chat < ApplicationRecord
   has_many :joined_chats, dependent: :destroy
   has_many :users, through: :joined_chats
 
-  validates :name, presence: true, length: { minimum: 1, maximum: 60 }
+  validates :name, presence: true, length: { minimum: 1, maximum: 30 }
   validates :host_id, presence: true
 end
