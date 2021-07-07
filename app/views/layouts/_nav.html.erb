@@ -28,7 +28,9 @@
       <% end %>
 
       <div class="dropdown">
-        <%= user_avatar(current_user, 40, "", "nav-avatar drop-btn") %>
+        <%= link_to current_user do %>
+          <%= user_avatar(current_user, 40, "", "nav-avatar") %>
+        <% end %>
 
         <div class="drop-content">
           <%= link_to edit_user_registration_path do %>
