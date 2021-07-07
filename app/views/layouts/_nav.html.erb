@@ -28,11 +28,13 @@
       <% end %>
 
       <div class="dropdown">
-        <%= link_to current_user do %>
-          <%= user_avatar(current_user, 40, "", "nav-avatar") %>
-        <% end %>
+        <%= user_avatar(current_user, 40, "nav-pic", "nav-avatar") %>
 
-        <div class="drop-content">
+        <div id="nav-drop-content" class="drop-content">
+          <%= link_to current_user do %>
+            <i class="fas fa-user-circle nav-icon"></i> Profile
+          <% end %>
+
           <%= link_to edit_user_registration_path do %>
             <i class="fas fa-cog nav-icon"></i> Settings
           <% end %>
