@@ -14,6 +14,7 @@ $dark-blue: rgb(0, 100, 131);
   left: 0;
   width: 100%;
   background-color: $blue;
+  z-index: 999;
 }
 
 #nav-first-div {
@@ -99,4 +100,99 @@ $dark-blue: rgb(0, 100, 131);
 
 .dropdown:hover .drop-content {
   display: block;
+}
+
+@media only screen and (max-width: 1500px) {
+  #nav-logo {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #nav-logo {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #nav-logo {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #nav-logo {
+    font-size: 16px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #nav-bar {
+    grid-template-columns: 1fr 4fr;
+  }
+
+  #nav-logo {
+    font-size: 15px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+  }
+}
+
+#nav-clearance {
+  margin-bottom: 1000px;
+}
+
+@media only screen and (max-width: 1000px) {
+  #nav-bar {
+    grid-template-columns: 1fr 6fr;
+  }
+
+  #nav-logo {
+    font-size: 14px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-link-text {
+    display: none;
+  }
+
+  .nav-icon {
+    font-size: 20px;
+  }
+
+  #nav-first-div {
+    display: none;
+  }
+  
+  #nav-second-div {
+    grid-column: 1 / -1;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .nav-icon {
+    font-size: 19px;
+  }
+
+  .nav-avatar {
+    height: 37px;
+    width: 37px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .nav-icon {
+    font-size: 17px;
+  }
 }

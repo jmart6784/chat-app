@@ -90,10 +90,6 @@ $light-blue: rgb(90, 195, 226);
     width: 50px;
   }
 
-  .chat-item-div {
-    padding: 7px 0 7px 0;
-  }
-
   .chat-item-name {
     font-size: 15px;
   }
@@ -122,7 +118,6 @@ $light-blue: rgb(90, 195, 226);
   }
 
   .chat-item-div {
-    padding: 5px 0 5px 0;
     grid-template-columns: 1fr 11fr 1fr;
   }
 
@@ -153,7 +148,12 @@ $light-blue: rgb(90, 195, 226);
   }
 
   .chat-item-name {
-    font-size: 12px;
+    width: 90%;
+    word-wrap: break-word;
+  }
+
+  .chat-item-dots {
+    font-size: 20px;
   }
 }
 
@@ -163,22 +163,30 @@ $light-blue: rgb(90, 195, 226);
   }
 
   .chat-item-name {
-    font-size: 11px;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .chat-item-name {
+    width: 250px;
+    font-size: 13px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .chat-item-name {
-    font-size: 9px;
+  .chat-item-dots {
+    font-size: 19px;
   }
 
-  .chat-item-dots {
-    font-size: 20px;
+  .chat-item-name {
+    width: 200px;
+    font-size: 12px;
   }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 300px) {
   .chat-item-name {
-    font-size: 8px;
+    width: 150px;
   }
 }

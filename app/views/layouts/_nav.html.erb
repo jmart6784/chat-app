@@ -8,23 +8,23 @@
 
     <div id="nav-second-div">
       <%= link_to chats_path, class: "nav-link" do %>
-        <i class="fas fa-comments nav-icon"></i> Chats
+        <i class="fas fa-comments nav-icon"></i> <span class="nav-link-text">Chats</span>
       <% end %>
 
       <%= link_to new_chat_path, class: "nav-link" do %>
-        <i class="fas fa-comment-medical nav-icon"></i> Create
+        <i class="fas fa-comment-medical nav-icon"></i> <span class="nav-link-text">Create</span>
       <% end %>
 
       <%= link_to friends_path(current_user.id), class: "nav-link" do %>
-        <i class="fas fa-users nav-icon"></i> Friends
+        <i class="fas fa-users nav-icon"></i> <span class="nav-link-text">Friends</span>
       <% end %>
 
       <%= link_to friend_requests_path, class: "nav-link" do %>
-        <i class="fas fa-user-plus nav-icon"></i> Friend Requests
+        <i class="fas fa-user-plus nav-icon"></i> <span class="nav-link-text">Friend Requests</span>
       <% end %>
     
       <%= link_to invitations_path, class: "nav-link" do %>
-        <i class="fas fa-envelope nav-icon"></i> Invites
+        <i class="fas fa-envelope nav-icon"></i> <span class="nav-link-text">Invites</span>
       <% end %>
 
       <div class="dropdown">
