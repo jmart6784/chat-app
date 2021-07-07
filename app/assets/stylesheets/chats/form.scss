@@ -27,6 +27,15 @@ $blue: rgb(0, 155, 202);
   border-radius: 5px;
 }
 
+#new-chat-name-errors-length {
+  display: none;
+}
+
+#new-chat-name-errors-length {
+  font-size: 12px;
+  font-style: italic;
+}
+
 #new-chat-submit {
   width: 100%;
   font-size: 18px;

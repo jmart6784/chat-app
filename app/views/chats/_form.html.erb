@@ -12,7 +12,8 @@
 
 
   <%= form_with model: @chat, html: {id: "new-chat-form"} do |f| %>
-    <%= f.text_field :name, placeholder: "Chat name", class: "new-chat-field" %>
+    <%= f.text_field :name, placeholder: "Chat name", id: "chat-name-input", class: "new-chat-field" %>
+    <p id="new-chat-name-errors-length">must be between 1-30 characters (<span id="new-chat-current-char">0</span>)</p>
 
     <%= f.submit "Submit", id: "new-chat-submit" %>
   <% end %>
