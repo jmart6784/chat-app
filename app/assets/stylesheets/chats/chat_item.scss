@@ -153,6 +153,17 @@ $light-blue: rgb(90, 195, 226);
   }
 }
 
+@media only screen and (max-width: 800px) {
+  .chat-opt-drop-content {
+    transform: translate(-60%, 1%);
+    width: 90px;
+  }
+
+  .chat-opt-drop-content a, .chat-opt-drop-content i {
+    font-size: 14px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .chat-item-div {
     grid-template-columns: 1fr 8fr 1fr;
@@ -168,9 +179,22 @@ $light-blue: rgb(90, 195, 226);
     width: 250px;
     font-size: 13px;
   }
+
+  .chat-opt-drop-content {
+    width: 80px;
+    transform: translate(-70%, 1%);
+  }
+
+  .chat-opt-drop-content a,  .chat-opt-drop-content i {
+    font-size: 13px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
+  .chat-opt-drop-content {
+    transform: translate(-80%, 1%);
+  }
+
   .chat-item-dots {
     font-size: 19px;
   }
