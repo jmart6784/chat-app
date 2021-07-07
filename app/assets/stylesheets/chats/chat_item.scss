@@ -80,10 +80,6 @@ $light-blue: rgb(90, 195, 226);
   color: white;
 }
 
-.chat-item-dropdown:hover .chat-opt-drop-content {
-  display: block;
-}
-
 @media only screen and (max-width: 1400px) {
   .chat-item-avatar {
     height: 50px;

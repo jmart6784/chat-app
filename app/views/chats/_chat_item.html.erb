@@ -13,9 +13,22 @@
 
   <div class="chat-item-dropdown">
     <% if chat.host === current_user %>
-      <i class="fas fa-ellipsis-h chat-item-dots"></i>
+    
+      <i id="<%= "chat-dots-id-#{chat.id}" %>" class="fas fa-ellipsis-h chat-item-dots" onclick='
+        let dropContent = document.getElementById(`<%= "chat-item-drp-c-#{chat.id}" %>`);
 
-      <div class="chat-opt-drop-content">
+        dropContent.style.display = `block`;
+
+        let dot = document.getElementById(`<%= "chat-dots-id-#{chat.id}" %>`);
+
+        document.addEventListener("click", (e) => {
+          if (e.target.id != "<%= "chat-dots-id-#{chat.id}" %>") {
+            dropContent.style.display = "none";
+          }
+        });
+      '></i>
+
+      <div id="<%= "chat-item-drp-c-#{chat.id}" %>" class="chat-opt-drop-content">
         <%= link_to edit_chat_path(chat) do %>
           <i class="fas fa-pen nav-icon"></i> Edit
         <% end %>
