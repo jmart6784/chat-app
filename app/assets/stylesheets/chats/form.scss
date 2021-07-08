@@ -47,6 +47,25 @@ $blue: rgb(0, 155, 202);
   border-radius: 5px;
 }
 
+.error-div {
+  border: 3px solid red;
+  background-color: rgb(110, 0, 0);
+  padding: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.error-title {
+  font-weight: 900;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.error-li {
+  font-size: 15px;
+}
+
 @media only screen and (max-width: 1000px) {
   .new-chat-parent-div {
     width: 45%;
@@ -62,5 +81,13 @@ $blue: rgb(0, 155, 202);
 @media only screen and (max-width: 800px) {
   .new-chat-parent-div {
     width: 80%;
+  }
+
+  .error-title {
+    font-size: 14px;
+  }
+  
+  .error-li {
+    font-size: 13px;
   }
 }

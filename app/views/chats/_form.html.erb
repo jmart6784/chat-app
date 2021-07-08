@@ -1,10 +1,10 @@
 <div class="new-chat-parent-div">
   <% if @chat.errors.any? %>
-    <div>
-      <p><%= flash[:danger] %></p>
+    <div class="error-div">
+      <p class="error-title"><%= flash[:danger] %></p>
       <ul>
         <% @chat.errors.full_messages.each do |msg| %>
-          <li><span><%= msg %></span></li>
+          <li class="error-li"><span><%= msg %></span></li>
         <% end %>
       </ul>
     </div>
