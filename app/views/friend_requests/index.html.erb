@@ -1,8 +1,13 @@
-<h1>Friend requests</h1>
 <% unless @requests.length === 0 %>
-  <% @requests.each do |request| %>
-    <%= render "global_partials/user_request_options", locals: {user: request.requestor} %>
-  <% end %>
+  <p class="friend-request-index-title">Friend requests</p>
+
+  <div class="user-options-div">
+    <% @requests.each do |request| %>
+      <%= render "global_partials/user_request_options", locals: {user: request.requestor} %>
+    <% end %>
+  </div>
 <% else %>
-  <div>No requests yet</div>
+  <div class="no-chats-div">
+    <p class="no-chats-p">No requests yet</p>
+  </div>
 <% end %>
