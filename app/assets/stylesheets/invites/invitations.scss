@@ -1,0 +1,73 @@
+$blue: rgb(0, 155, 202);
+
+.invites-flex-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40%;
+  max-width: 720px;
+  margin: auto;
+  row-gap: 40px;
+}
+
+.invite-div-container {
+  background-color: $blue;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  row-gap: 20px;
+}
+
+.invite-top-div {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 12fr;
+}
+
+.invite-avatar {
+  border-radius: 100%;
+  margin-right: 5px;
+}
+
+.invite-description {
+  display: flex;
+  align-items: center;
+  width: 600px;
+  height: 100%;
+  word-wrap: break-word;
+  font-size: 15px;
+}
+
+.invite-btn-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.invite-index-accept {
+  background-color: green;
+  font-size: 15px;
+}
+
+.invite-index-decline {
+  background-color: red;
+  font-size: 15px;
+}
+
+.invite-index-btn {
+  padding: 10px;
+  font-weight: 900;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+}

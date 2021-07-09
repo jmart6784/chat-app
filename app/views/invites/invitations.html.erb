@@ -1,45 +1,36 @@
-<h1>Invitations</h1>
+<% if @invites.count === 0 %>
+  <div class="no-chats-div">
+    <p class="no-chats-p">No invites</p>
+  </div>
+<% else %>
+  <div id="invites-container">
+    <p class="friend-request-index-title">Invitations</p>
+    
+    <div class="invites-flex-div">
+      <% @invites.each do |invite| %>
+        <div id="<%= "parent-invite-div-#{invite.id}" %>" class="invite-div-container">
 
-<div id="invites-container">
-  <% if @invites.count === 0 %>
-    No invites
-  <% else %>
-    <% @invites.each do |invite| %>
-      <div id="<%= "parent-invite-div-#{invite.id}" %>">
-        <span><%= link_to invite.host.username, invite.host %> has invited you to their chat room "<%= invite.chat.name %>"</span>
+          <div class="invite-top-div">
+            <%= link_to invite.host do %>
+              <%= user_avatar(invite.host, 50, "", "invite-avatar") %>
+            <% end %>
 
-        <span id="invite-<%= invite.id %>">
-          <%= 
-            link_to "Accept", 
-            ajax_joined_chat_create_path(
-              choice: "Accept",
-              chat_id: invite.chat_id,
-              host_id: invite.host_id,
-              guest_id: invite.guest_id,
-              html_id: "invite-#{invite.id}",
-              parent_html_id: "parent-invite-div-#{invite.id}"
-            ), 
-            method: :put,
-            remote: true
-          %>
+            <p class="invite-description">
+              <%= invite.host.username %> has invited you to their chat room "<%= invite.chat.name %>"
+            </p>
+          </div>
 
-          <%= 
-            link_to "Decline", 
-            ajax_joined_chat_create_path(
-              choice: "Decline",
-              chat_id: invite.chat_id,
-              host_id: invite.host_id,
-              guest_id: invite.guest_id,
-              html_id: "invite-#{invite.id}",
-              parent_html_id: "parent-invite-div-#{invite.id}"
-            ), 
-            method: :put,
-            remote: true
-          %>
-        </span>
-      </div>
+          <div id="invite-<%= invite.id %>" class="invite-btn-div">
+            <%= link_to ajax_joined_chat_create_path(choice: "Accept", chat_id: invite.chat_id, host_id: invite.host_id, guest_id: invite.guest_id, html_id: "invite-#{invite.id}", parent_html_id: "parent-invite-div-#{invite.id}"), method: :put, remote: true, class: "invite-index-accept invite-index-btn" do %>
+              <i class="fas fa-check invite-index-accept"></i> Accept
+            <% end %>
 
-      <br /><br />
-    <% end %>
-  <% end %>
-</div>
+            <%= link_to ajax_joined_chat_create_path(choice: "Decline", chat_id: invite.chat_id, host_id: invite.host_id, guest_id: invite.guest_id, html_id: "invite-#{invite.id}", parent_html_id: "parent-invite-div-#{invite.id}"), method: :put, remote: true, class: "invite-index-decline invite-index-btn" do %>
+              <i class="fas fa-times invite-index-decline"></i> Decline
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
