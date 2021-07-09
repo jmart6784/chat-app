@@ -10,7 +10,7 @@ class FriendRequestsController < ApplicationController
     existing_friendship1 = Friendship.find_by(user_a: @requestor.id, user_b: @receiver.id)
     existing_friendship2 = Friendship.find_by(user_a: @receiver.id, user_b: @requestor.id)
 
-    return unless current_user === @requestor || existing_friendship1.nil? || existing_friendship2.nil?
+    return unless current_user === @requestor || current_user != @receiver || existing_friendship1.nil? || existing_friendship2.nil?
 
     existing_request = FriendRequest.find_by(requestor_id: @receiver.id, receiver_id: @requestor.id)
 
