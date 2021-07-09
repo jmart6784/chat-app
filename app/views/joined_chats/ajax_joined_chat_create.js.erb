@@ -5,12 +5,12 @@ var invitesContainer = document.getElementById("invites-container");
 <% if @is_created %>
   linkContainer.innerHTML = ``;
   linkContainer.innerHTML = `
-    <%= link_to "View Chat", @chat %>
+    <%= link_to "View Chat", @chat, class: "invites-index-view-chat invite-index-btn" %>
   `;
 <% else %>
   if (parseInt("<%= current_user.invites_as_guest.count %>") === 0) {
     invitesContainer.innerHTML = "";
-    invitesContainer.innerHTML = "No invites";
+    invitesContainer.innerHTML = '<div class="no-chats-div"><p class="no-chats-p">No invites</p></div>';
   } else {
     parentDiv.remove();
   }

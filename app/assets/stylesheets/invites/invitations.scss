@@ -1,4 +1,5 @@
 $blue: rgb(0, 155, 202);
+$dark-blue: rgb(0, 100, 131);
 
 .invites-flex-div {
   display: flex;
@@ -32,7 +33,7 @@ $blue: rgb(0, 155, 202);
 
 .invite-avatar {
   border-radius: 100%;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .invite-description {
@@ -60,6 +61,11 @@ $blue: rgb(0, 155, 202);
 
 .invite-index-decline {
   background-color: red;
+  font-size: 15px;
+}
+
+.invites-index-view-chat {
+  background-color: $dark-blue;
   font-size: 15px;
 }
 
@@ -156,7 +162,7 @@ $blue: rgb(0, 155, 202);
     font-size: 14px;
   }
 
-  .invite-index-accept, .invite-index-decline {
+  .invite-index-accept, .invite-index-decline, .invites-index-view-chat {
     font-size: 14px;
   }
 }
@@ -167,7 +173,7 @@ $blue: rgb(0, 155, 202);
     font-size: 13px;
   }
 
-  .invite-index-accept, .invite-index-decline {
+  .invite-index-accept, .invite-index-decline, .invites-index-view-chat {
     font-size: 13px;
   }
 }
@@ -184,7 +190,7 @@ $blue: rgb(0, 155, 202);
     font-size: 12px;
   }
 
-  .invite-index-accept, .invite-index-decline {
+  .invite-index-accept, .invite-index-decline, .invites-index-view-chat {
     font-size: 12px;
   }
 
@@ -200,7 +206,7 @@ $blue: rgb(0, 155, 202);
     font-size: 11px;
   }
 
-  .invite-index-accept, .invite-index-decline {
+  .invite-index-accept, .invite-index-decline, .invites-index-view-chat {
     font-size: 11px;
   }
 
@@ -216,7 +222,7 @@ $blue: rgb(0, 155, 202);
     font-size: 10px;
   }
 
-  .invite-index-accept, .invite-index-decline {
+  .invite-index-accept, .invite-index-decline, .invites-index-view-chat {
     font-size: 10px;
   }
 
@@ -235,5 +241,11 @@ $blue: rgb(0, 155, 202);
   .invite-avatar {
     height: 30px;
     width: 30px;
+  }
+}
+
+@media only screen and (max-width: 291px) {
+  .invite-description {
+    font-size: 9.25px;
   }
 }
