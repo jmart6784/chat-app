@@ -1,0 +1,57 @@
+$blue: rgb(0, 155, 202);
+$dark-blue: rgb(0, 100, 131);
+
+.user-show-div {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-show-avatar {
+  border-radius: 100%;
+}
+
+.user-show-profile {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  background-color: $blue;
+  width: 45%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 20px 10px 20px 10px;
+}
+
+.user-profile-text-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  flex-direction: column;
+}
+
+.user-show-text-limit {
+  border: 1px solid blue;
+  width: 650px;
+  word-wrap: break-word;
+}
+
+.user-show-username {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.user-show-fullname {
+  font-size: 15px;
+}
+
+.user-show-bio {
+  font-size: 15px;
+}
+
+.user-show-friends {
+  font-size: 20px;
+  text-decoration: none;
+}

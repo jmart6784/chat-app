@@ -1,4 +1,25 @@
-<h1>User show</h1>
+<div class="user-show-div">
+  <div class="user-show-profile">
+    <%= user_avatar(@user, 150, "", "user-show-avatar") %>
 
-<p><%= full_name(@user) %></p>
-<p>BIO: <%= @user.bio %></p>
+    <div class="user-profile-text-div">
+      <p class="user-show-text-limit user-show-username">
+        <%= @user.username %>
+      </p>
+
+      <p class="user-show-text-limit user-show-fullname">
+        <%= full_name(@user) %>
+      </p>
+
+      <% unless @user.bio.nil? || @user.bio.strip === "" %>
+        <p class="user-show-text-limit user-show-bio">
+          <%= @user.bio %>
+        </p>
+      <% end %>
+
+      <%= link_to friends_path(@user.id), class: "user-show-text-limit user-show-friends" do %>
+        <i class="fas fa-users user-show-friends"></i> Friends (<%= friend_list(@user).length %>)
+      <% end %>
+    </div>
+  </div>
+</div>
