@@ -71,3 +71,169 @@ $blue: rgb(0, 155, 202);
   text-align: center;
   border-radius: 5px;
 }
+
+@media only screen and (max-width: 1700px) {
+  .invite-description {
+    width: 550px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .invite-description {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .invites-flex-div {
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .invite-description {
+    width: 525px;
+  }
+
+  .invites-flex-div {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .invite-description {
+    width: 500px;
+  }
+
+  .invites-flex-div {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .invites-flex-div {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .invites-flex-div {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .invite-description {
+    width: 600px;
+  }
+
+  .invites-flex-div {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .invite-description {
+    width: 550px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .invite-description {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .invite-description {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .invite-description {
+    width: 400px;
+    font-size: 14px;
+  }
+
+  .invite-index-accept, .invite-index-decline {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .invite-description {
+    width: 350px;
+    font-size: 13px;
+  }
+
+  .invite-index-accept, .invite-index-decline {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .invite-description {
+    width: 325px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .invite-description {
+    width: 300px;
+    font-size: 12px;
+  }
+
+  .invite-index-accept, .invite-index-decline {
+    font-size: 12px;
+  }
+
+  .invite-avatar {
+    height: 45px;
+    width: 45px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .invite-description {
+    width: 250px;
+    font-size: 11px;
+  }
+
+  .invite-index-accept, .invite-index-decline {
+    font-size: 11px;
+  }
+
+  .invite-avatar {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .invite-description {
+    width: 225px;
+    font-size: 10px;
+  }
+
+  .invite-index-accept, .invite-index-decline {
+    font-size: 10px;
+  }
+
+  .invite-avatar {
+    height: 35px;
+    width: 35px;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .invite-description {
+    width: 200px;
+    font-size: 9.5px;
+  }
+
+  .invite-avatar {
+    height: 30px;
+    width: 30px;
+  }
+}
