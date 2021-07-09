@@ -1,0 +1,36 @@
+<% user = locals[:user] %>
+ 
+ <% friend_request = FriendRequest.find_by(requestor_id: current_user.id, receiver_id: user.id) %>
+
+<% if request_pending?(current_user, user) %>
+  <div class="user-opt-sent user-opt-btn"><i class="fas fa-clock two-opt-icon"></i> Sent</div>
+<% elsif response_pending?(current_user, user) %>
+  <div id="<%= "parent-fs-div-#{user.id}" %>">
+    <div id="<%= "friendship-options-#{user.id}" %>" class="user-opt-acc-dec-div">
+      <%= link_to ajax_friendship_friendship_path(user_a: current_user.id, user_b: user.id, parent_div: "parent-fs-div-#{user.id}", options_div: "friendship-options-#{user.id}", choice: "Accept", id: 0), method: :put, remote: true, id: "user-opt-accept", class: "user-opt-btn" do %>
+        <% if locals[:action] === "show" %>
+          Accept
+        <% else %>
+          <i class="fas fa-check two-opt-icon"></i> Accept
+        <% end %>
+      <% end %>
+
+      <%= link_to ajax_friendship_friendship_path(user_a: current_user.id, user_b: user.id, parent_div: "parent-fs-div-#{user.id}", options_div: "friendship-options-#{user.id}", choice: "Decline", id: 0), method: :put, remote: true, id: "user-opt-decline", class: "user-opt-btn" do %>
+        <% if locals[:action] === "show" %>
+          Decline
+        <% else %>
+          <i class="fas fa-times two-opt-icon"></i> Decline
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% elsif is_friend?(current_user, user) %>
+  <%= link_to ajax_friendship_destroy_friendship_path(id: user.id, html_id: "unfriend-#{user.id}"), method: :delete, remote: true, id: "unfriend-#{user.id}", class: "user-opt-unfriend user-opt-btn" do %>
+    <i class="fas fa-user-times two-opt-icon"></i> Unfriend
+  <% end %>
+<% elsif is_friend?(current_user, user) === false %>
+  <% request_txt = friend_request ? "Sent" : "Add" %>
+  <%= link_to ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: user.id, html_id: "request-#{user.id}", id: 0), method: :put, remote: true, id: "request-#{user.id}", class: "user-opt-add user-opt-btn" do %>
+    <i class="fas fa-user-plus two-opt-icon"></i> <%= request_txt %>
+  <% end %>
+<% end %>

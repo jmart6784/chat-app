@@ -1,6 +1,11 @@
 <div class="user-show-div">
   <div class="user-show-profile">
-    <%= user_avatar(@user, 150, "", "user-show-avatar") %>
+    <div class="ava-and-user-opts">
+      <%= user_avatar(@user, 150, "", "user-show-avatar") %>
+      <% unless current_user === @user %>
+        <%= render "global_partials/user_opts", locals: {user: @user, action: "show"} %>
+      <% end %>
+    </div>
 
     <div class="user-profile-text-div">
       <p class="user-show-text-limit user-show-username">

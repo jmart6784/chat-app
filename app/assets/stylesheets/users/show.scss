@@ -8,6 +8,14 @@ $dark-blue: rgb(0, 100, 131);
   justify-content: center;
 }
 
+.ava-and-user-opts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 .user-show-avatar {
   border-radius: 100%;
   margin-right: 10px;
@@ -17,7 +25,7 @@ $dark-blue: rgb(0, 100, 131);
   display: grid;
   align-items: center;
   justify-items: center;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   background-color: $blue;
   width: 45%;
   max-width: 832px;
@@ -166,6 +174,7 @@ $dark-blue: rgb(0, 100, 131);
 @media only screen and (max-width: 900px) {
   .user-show-text-limit {
     width: 800px;
+    text-align: center;
   }
 
   .user-show-profile {
