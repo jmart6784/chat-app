@@ -1,9 +1,15 @@
-<div>
-  <h1 class="friends-title">Friends</h1>
-
-  <div class="user-options-div">
-    <% @friends.each do |friend| %>
-      <%= render "global_partials/user_request_options", locals: {user: friend} %>
-    <% end %>
+<% if @friends.length === 0 %>
+  <div class="no-chats-div">
+    <p class="no-chats-p">No Friends</p>
   </div>
-</div>
+<% else %>
+  <div>
+    <h1 class="friends-title">Friends</h1>
+
+    <div class="user-options-div">
+      <% @friends.each do |friend| %>
+        <%= render "global_partials/user_request_options", locals: {user: friend} %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

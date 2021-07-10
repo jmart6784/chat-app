@@ -1,3 +1,13 @@
 var linkElement = document.getElementById("<%= params[:html_id] %>");
+
 linkElement.textContent = "<%= @request_text %>";
-linkElement.outerHTML = '<span>' + linkElement.innerHTML + '</span>';
+
+<% if @request_text === "Sent" %>
+  linkElement.outerHTML = `<div class="user-opt-sent user-opt-btn"><i class="fas fa-clock two-opt-icon"></i> Sent</div>`;
+<% elsif @request_text === "Add" %>
+  linkElement.outerHTML = `
+    <%= link_to ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: @receiver.id, html_id: "request-#{@receiver.id}", id: 0), method: :put, remote: true, id: "request-#{@receiver.id}", class: "user-opt-add user-opt-btn" do %>
+      <i class="fas fa-user-plus two-opt-icon"></i> Add
+    <% end %>
+  `;
+<% end %>

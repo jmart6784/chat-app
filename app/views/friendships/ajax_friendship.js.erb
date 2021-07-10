@@ -9,8 +9,9 @@ var optionsDiv = document.getElementById("<%= params[:options_div] %>");
       data-method="delete"
       rel="nofollow" 
       href="<%= raw ajax_friendship_destroy_friendship_path(id: @user_b.id, html_id: "unfriend-#{@user_b.id}") %>"
+      class="user-opt-unfriend user-opt-btn"
     >
-      Unfriend
+      <i class="fas fa-user-times two-opt-icon"></i> Unfriend
     </a>`;
 
   parentDiv.insertAdjacentHTML("afterend", content);
@@ -22,8 +23,10 @@ var optionsDiv = document.getElementById("<%= params[:options_div] %>");
       data-remote="true" 
       rel="nofollow" 
       data-method="put" 
-      href="<%= raw ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: @user_b.id, html_id: "request-#{@user_b.id}", id: 0) %>">
-        Add
+      href="<%= raw ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: @user_b.id, html_id: "request-#{@user_b.id}", id: 0) %>"
+      class="user-opt-add user-opt-btn"
+    >
+        <i class="fas fa-user-plus two-opt-icon"></i> Add
     </a>`;
 
   parentDiv.insertAdjacentHTML("afterend", content);
