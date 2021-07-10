@@ -1,0 +1,108 @@
+$blue: rgb(0, 155, 202);
+$dark-blue: rgb(0, 100, 131);
+
+.invite-chat-mid {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.invite-chat-title {
+  margin: 100px 0 10px 0;
+  text-align: center;
+  width: 100%;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.invite-chat-sub-title {
+  margin: auto;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: 100;
+  text-align: center;
+  width: 100%;
+}
+
+.invite-chat-mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  row-gap: 50px;
+  column-gap: 30px;
+  flex-wrap: wrap;
+}
+
+.chat-invite-item-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+  background-color: $blue;
+  border-radius: 5px;
+  padding: 20px;
+  width: fit-content;
+}
+
+.chat-invite-avatar {
+  border-radius: 100%;
+}
+
+.chat-invite-username {
+  font-size: 15px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.chat-invite-btn {
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 17px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.chat-invite-sent {
+  background-color: gray;
+}
+
+.chat-invite-link {
+  background-color: $dark-blue;
+}
+
+@media only screen and (max-width: 900px) {
+  .invite-chat-mid {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 384px) {
+  .invite-chat-title {
+    font-size: 28px;
+  }
+
+  .invite-chat-sub-title {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 326px) {
+  .invite-chat-title {
+    font-size: 26px;
+  }
+
+  .invite-chat-sub-title {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .invite-chat-title {
+    font-size: 24px;
+  }
+
+  .invite-chat-sub-title {
+    font-size: 11px;
+  }
+}

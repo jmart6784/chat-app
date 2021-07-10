@@ -1,46 +1,40 @@
-<h1>Invite Friends</h1>
-<h2><%= @chat.name %></h2>
+<div>
 
-<% already_joined_count = 0 %>
+  <% already_joined_count = 0 %>
 
-<% if @friends.count === 0 %>
-  <div>
-    <h3>No friends :(</h3>
-  </div>
-<% else %>
-  <% @friends.each do |friend| %>
-    <% already_joined_count += 1 if chat_joined?(friend, @chat) %>
-    <% next if chat_joined?(friend, @chat) %>
+  <% if @friends.count === 0 %>
+    <div class="no-chats-div">
+      <p class="no-chats-p">No friends to invite</p>
+    </div>
+  <% else %>
+    <h1 class="invite-chat-title">Invite Friends</h1>
+    <p class="invite-chat-sub-title">to your chat room "<%= @chat.name %>"</p>
 
-    <div>
-      <%= link_to friend.username, friend %>
+    <div class="invite-chat-mid">
+      <% @friends.each do |friend| %>
+        <% already_joined_count += 1 if chat_joined?(friend, @chat) %>
+        <% next if chat_joined?(friend, @chat) %>
 
-      <span>
-        <% if invite_exists?(current_user, friend, @chat) %>
-          <span>Sent</span>
-        <% else %>
-          <%= 
-            link_to "Invite", 
-            ajax_invite_create_path(
-              host_id: current_user.id, 
-              guest_id: friend.id, 
-              chat_id: @chat.id,
-              html_id: "invite-user-#{friend.id}"
-            ), 
-            remote: true,
-            method: :put,
-            id: "invite-user-#{friend.id}"
-          %>
-        <% end %>
-      </span>
+        <div class="chat-invite-item-div">
+          <%= user_avatar(friend, 100, "", "chat-invite-avatar") %>
+
+          <%= link_to friend.username, friend, class: "chat-invite-username" %>
+          
+          <% if invite_exists?(current_user, friend, @chat) %>
+            <p class="chat-invite-sent chat-invite-btn">Sent</p>
+          <% else %>
+            <%= link_to ajax_invite_create_path(host_id: current_user.id, guest_id: friend.id, chat_id: @chat.id, html_id: "invite-user-#{friend.id}"), remote: true, method: :put, id: "invite-user-#{friend.id}", class: "chat-invite-link chat-invite-btn" do %>
+              <i class="fas fa-plus chat-invite-btn"></i> Invite
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
-    <br /><br />
+    <% if @friends.count === already_joined_count %>
+      <div class="no-chats-div">
+        <p class="no-chats-p">No more friends to invite</p>
+      </div>
+    <% end %>
   <% end %>
-
-  <% if @friends.count === already_joined_count %>
-    <div>
-      <h3>No more friends to invite</h3>
-    </div>
-  <% end %>
-<% end %>
+</div>
