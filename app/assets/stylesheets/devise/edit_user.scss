@@ -1,0 +1,83 @@
+$blue: rgb(0, 155, 202);
+
+.user-edit-container {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-edit-title {
+  font-size: 30px;
+  font-weight: 100;
+  margin-bottom: 30px;
+}
+
+.user-edit-form {
+  width: 40%;
+  max-width: 740px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: $blue;
+  padding: 20px;
+}
+
+.user-edit-ava-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 15px;
+}
+
+.user-edit-avatar {
+  border-radius: 100%;
+}
+
+.user-edit-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.user-edit-double-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  width: 100%;
+}
+
+.edit-user-label {
+  font-size: 13.5px;
+}
+
+.edit-user-text-field {
+  font-size: 15px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.edit-user-text-area {
+  resize: none;
+  height: 60px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.edit-user-submit {
+  width: 100%;
+  font-size: 15px;
+  border-radius: 5px;
+  border: 0px;
+  padding: 10px;
+  font-weight: 900;
+  background-color: rgb(90, 195, 226);
+  color: white;
+}
