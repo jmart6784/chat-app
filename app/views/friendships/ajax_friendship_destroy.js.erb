@@ -1,6 +1,8 @@
 var link = document.getElementById("<%= params[:html_id] %>");
-link.textContent = "Add";
+link.innerHTML = '<i class="fas fa-user-plus two-opt-icon"></i> Add';
 link.setAttribute("data-method", "put");
 link.setAttribute("data-remote", "true");
 link.id = "request-<%= params[:id] %>"
+link.className = "";
+link.className = "user-opt-add user-opt-btn"
 link.href = '<%= raw ajax_friend_request_friend_request_path(requestor_id: current_user.id, receiver_id: params[:id].to_i, html_id: "request-#{params[:id]}", id: 0) %>';
