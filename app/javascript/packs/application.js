@@ -50,3 +50,26 @@ document.addEventListener('turbolinks:load', () => {
     }); 
   }
 });
+
+document.addEventListener('turbolinks:load', () => {
+  const passwordBtn = document.getElementById("change-password-btn");
+  const passField1 = document.getElementById("edit-user-password-1");
+  const passField2 = document.getElementById("edit-user-password-2");
+
+  passField1.style.display = "none";
+  passField2.style.display = "none"; 
+
+  if (passwordBtn) {
+    passwordBtn.addEventListener("click", () => {
+      if (passField1.style.display === "flex") {
+        passField1.style.display = "none";
+        passField2.style.display = "none";
+        passwordBtn.textContent = "Change Password";
+      } else if (passField1.style.display === "none") {
+        passField1.style.display = "flex";
+        passField2.style.display = "flex"; 
+        passwordBtn.textContent = "Hide Fields";
+      }
+    });
+  }
+});

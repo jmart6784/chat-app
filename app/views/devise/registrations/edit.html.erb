@@ -45,7 +45,9 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <div class="user-edit-field">
+    <p id="change-password-btn">Change Password</p>
+
+    <div id="edit-user-password-1" class="user-edit-field">
       <%= f.label :password, class: "edit-user-label" %>
       <%= f.password_field :password, autocomplete: "new-password", class: "edit-user-text-field" %>
 
@@ -54,7 +56,7 @@
       <% end %>
     </div>
 
-    <div class="user-edit-field">
+    <div id="edit-user-password-2" class="user-edit-field">
       <%= f.label :password_confirmation, class: "edit-user-label" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "edit-user-text-field" %>
     </div>
