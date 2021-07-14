@@ -161,3 +161,24 @@ document.addEventListener('turbolinks:load', () => {
     });
   }
 });
+
+// email input field validations
+document.addEventListener('turbolinks:load', () => {
+  const firstnameField = document.getElementById("firstname-field");
+  const firstnameLength = document.getElementById("firstname-valid-txt-1");
+
+  if (firstnameField) {
+    firstnameLength.style.display = "none";
+
+    firstnameField.addEventListener("input", () => {
+      firstnameLength.style.display = "block";
+      firstnameLength.textContent = `name must be between 1-60 characters long (${firstnameField.value.length})`;
+
+      if (firstnameField.value.length >= 1 &&  firstnameField.value.length <= 60) {
+        firstnameLength.style.color = "green";
+      } else {
+        firstnameLength.style.color = "red";
+      }
+    }); 
+  }
+});

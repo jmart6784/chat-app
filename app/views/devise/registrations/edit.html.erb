@@ -33,7 +33,9 @@
     <div class="user-edit-double-field">
       <div class="user-edit-field">
         <%= f.label :first_name, class: "edit-user-label" %>
-        <%= f.text_field :first_name, class: "edit-user-text-field" %>
+        <%= f.text_field :first_name, class: "edit-user-text-field", id: "firstname-field" %>
+
+        <p id="firstname-valid-txt-1" class="validations-labels">name must be between 1-60 characters long (0)</p>
       </div>
 
       <div class="user-edit-field">
