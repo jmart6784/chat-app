@@ -203,3 +203,24 @@ document.addEventListener('turbolinks:load', () => {
     }); 
   }
 });
+
+// Bio input field validations
+document.addEventListener('turbolinks:load', () => {
+  const bioField = document.getElementById("bio-field");
+  const bioLength = document.getElementById("bio-valid-txt-1");
+
+  if (bioField) {
+    bioLength.style.display = "none";
+
+    bioField.addEventListener("input", () => {
+      bioLength.style.display = "block";
+      bioLength.textContent = `character limit is 150 (${bioField.value.length})`;
+
+      if (bioField.value.length <= 150) {
+        bioLength.style.color = "green";
+      } else {
+        bioLength.style.color = "red";
+      }
+    });
+  }
+});

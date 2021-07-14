@@ -48,7 +48,9 @@
 
     <div class="user-edit-field">
       <%= f.label :bio, class: "edit-user-label" %>
-      <%= f.text_area :bio, class: "edit-user-text-area" %>
+      <%= f.text_area :bio, class: "edit-user-text-area", id: "bio-field" %>
+
+      <p id="bio-valid-txt-1" class="validations-labels">character limit is 150 (0)</p>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
