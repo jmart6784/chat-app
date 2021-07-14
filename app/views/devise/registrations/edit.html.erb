@@ -16,13 +16,17 @@
       <div class="user-edit-field">
         <%= f.label :username, class: "edit-user-label" %>
         <%= f.text_field :username, class: "edit-user-text-field", id: "username-field" %>
+
         <p id="username-valid-txt-1" class="validations-labels">must be 4-16 characters (0)</p>
         <p id="username-valid-txt-2" class="validations-labels">includes only letters and numbers</p>
       </div>
 
       <div class="user-edit-field">
         <%= f.label :email, class: "edit-user-label" %>
-        <%= f.email_field :email, autocomplete: "email", class: "edit-user-text-field" %>
+        <%= f.email_field :email, autocomplete: "email", class: "edit-user-text-field", id: "email-field" %>
+
+        <p id="email-valid-txt-1" class="validations-labels">email must be valid</p>
+        <p id="email-valid-txt-2" class="validations-labels">email required</p>
       </div>
     </div>
 

@@ -102,7 +102,7 @@ document.addEventListener('turbolinks:load', () => {
   }
 });
 
-// First name input field validations
+// Username input field validations
 document.addEventListener('turbolinks:load', () => {
   const usernameField = document.getElementById("username-field");
   const usernameValidLength = document.getElementById("username-valid-txt-1");
@@ -110,9 +110,11 @@ document.addEventListener('turbolinks:load', () => {
 
   if (usernameField) {
     usernameValidLength.style.display = "none";
+    usernameValidFormat.style.display = "none";
 
     usernameField.addEventListener("input", () => {
       usernameValidLength.style.display = "block";
+      usernameValidFormat.style.display = "block";
 
       if (usernameField.value.length >= 4 && usernameField.value.length <= 16) {
         usernameValidLength.textContent = `must be 4-16 characters (${usernameField.value.length})`;
@@ -126,6 +128,35 @@ document.addEventListener('turbolinks:load', () => {
         usernameValidFormat.style.color = "green";
       } else {
         usernameValidFormat.style.color = "red";
+      }
+    });
+  }
+});
+
+// email input field validations
+document.addEventListener('turbolinks:load', () => {
+  const emailField = document.getElementById("email-field");
+  const emailValidFormat = document.getElementById("email-valid-txt-1");
+  const emailLength = document.getElementById("email-valid-txt-2");
+
+  if (emailField) {
+    emailLength.style.display = "none";
+    emailValidFormat.style.display = "none";
+
+    emailField.addEventListener("input", () => {
+      emailLength.style.display = "block";
+      emailValidFormat.style.display = "block";
+
+      if (emailField.value.length === 0) {
+        emailLength.style.color = "red";
+      } else {
+        emailLength.style.color = "green";
+      }
+
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+        emailValidFormat.style.color = "green";
+      } else {
+        emailValidFormat.style.color = "red";
       }
     });
   }
