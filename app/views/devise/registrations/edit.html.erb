@@ -45,7 +45,7 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <p id="change-password-btn">Change Password</p>
+    <p id="change-password-btn" class="no-select">Change Password</p>
 
     <div id="edit-user-password-1" class="user-edit-field">
       <%= f.label :password, class: "edit-user-label" %>
@@ -64,9 +64,13 @@
     <%= f.submit "Update", class: "edit-user-submit" %>
   <% end %>
 
-  <h3>Cancel my account</h3>
+  <div class="user-edit-delete-div">
+    <p id="delete-account-btn" class="no-select">Delete my account</p>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+    <div id="user-delete-options-div">
+      <%= button_to "Delete", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, id: "user-delete-btn" %>
 
-  <%= link_to "Back", :back %>
+      <p id="user-edit-cancel-btn" class="no-select">Cancel</p>
+    </div>
+  </div>
 </div>

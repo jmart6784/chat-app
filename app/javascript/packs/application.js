@@ -51,6 +51,7 @@ document.addEventListener('turbolinks:load', () => {
   }
 });
 
+// Hide/Show change password fields
 document.addEventListener('turbolinks:load', () => {
   const passwordBtn = document.getElementById("change-password-btn");
   const passField1 = document.getElementById("edit-user-password-1");
@@ -69,6 +70,33 @@ document.addEventListener('turbolinks:load', () => {
         passField1.style.display = "flex";
         passField2.style.display = "flex"; 
         passwordBtn.textContent = "Hide Fields";
+      }
+    });
+  }
+});
+
+// Delete user show/hide links
+document.addEventListener('turbolinks:load', () => {
+  const deleteBtn = document.getElementById("delete-account-btn");
+  const optionsDiv = document.getElementById("user-delete-options-div");
+  const cancelBtn = document.getElementById("user-edit-cancel-btn");
+
+  if (deleteBtn) {
+    optionsDiv.style.display = "none";
+
+    deleteBtn.addEventListener("click", () => {
+      if (optionsDiv.style.display === "none") {
+        optionsDiv.style.display = "flex";
+      } else {
+        optionsDiv.style.display = "none";
+      }
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      if (optionsDiv.style.display === "none") {
+        optionsDiv.style.display = "flex";
+      } else {
+        optionsDiv.style.display = "none";
       }
     });
   }
