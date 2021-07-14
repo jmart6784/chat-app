@@ -15,7 +15,9 @@
     <div class="user-edit-double-field">
       <div class="user-edit-field">
         <%= f.label :username, class: "edit-user-label" %>
-        <%= f.text_field :username, class: "edit-user-text-field" %>
+        <%= f.text_field :username, class: "edit-user-text-field", id: "username-field" %>
+        <p id="username-valid-txt-1" class="validations-labels">must be 4-16 characters (0)</p>
+        <p id="username-valid-txt-2" class="validations-labels">includes only letters and numbers</p>
       </div>
 
       <div class="user-edit-field">

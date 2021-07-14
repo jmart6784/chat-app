@@ -101,3 +101,32 @@ document.addEventListener('turbolinks:load', () => {
     });
   }
 });
+
+// First name input field validations
+document.addEventListener('turbolinks:load', () => {
+  const usernameField = document.getElementById("username-field");
+  const usernameValidLength = document.getElementById("username-valid-txt-1");
+  const usernameValidFormat = document.getElementById("username-valid-txt-2");
+
+  if (usernameField) {
+    usernameValidLength.style.display = "none";
+
+    usernameField.addEventListener("input", () => {
+      usernameValidLength.style.display = "block";
+
+      if (usernameField.value.length >= 4 && usernameField.value.length <= 16) {
+        usernameValidLength.textContent = `must be 4-16 characters (${usernameField.value.length})`;
+        usernameValidLength.style.color = "green";
+      } else {
+        usernameValidLength.textContent = `username must be 4-16 characters long, currently (${usernameField.value.length})`
+        usernameValidLength.style.color = "red";
+      }
+
+      if (/^[a-zA-Z0-9]+$/.test(usernameField.value)) {
+        usernameValidFormat.style.color = "green";
+      } else {
+        usernameValidFormat.style.color = "red";
+      }
+    });
+  }
+});
