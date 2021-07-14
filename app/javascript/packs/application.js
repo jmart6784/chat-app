@@ -162,7 +162,7 @@ document.addEventListener('turbolinks:load', () => {
   }
 });
 
-// email input field validations
+// firstname input field validations
 document.addEventListener('turbolinks:load', () => {
   const firstnameField = document.getElementById("firstname-field");
   const firstnameLength = document.getElementById("firstname-valid-txt-1");
@@ -178,6 +178,27 @@ document.addEventListener('turbolinks:load', () => {
         firstnameLength.style.color = "green";
       } else {
         firstnameLength.style.color = "red";
+      }
+    }); 
+  }
+});
+
+// lastname input field validations
+document.addEventListener('turbolinks:load', () => {
+  const lastnameField = document.getElementById("lastname-field");
+  const lastnameLength = document.getElementById("lastname-valid-txt-1");
+
+  if (lastnameField) {
+    lastnameLength.style.display = "none";
+
+    lastnameField.addEventListener("input", () => {
+      lastnameLength.style.display = "block";
+      lastnameLength.textContent = `name must be between 1-60 characters long (${lastnameField.value.length})`;
+
+      if (lastnameField.value.length >= 1 &&  lastnameField.value.length <= 60) {
+        lastnameLength.style.color = "green";
+      } else {
+        lastnameLength.style.color = "red";
       }
     }); 
   }
