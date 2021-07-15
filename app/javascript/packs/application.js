@@ -18,15 +18,17 @@ document.addEventListener('turbolinks:load', () => {
   const navPic = document.getElementById("nav-pic");
   const dropContent = document.getElementById("nav-drop-content");
 
-  navPic.addEventListener("click", () => {
-    dropContent.style.display = "block";
-  });
-
-  document.addEventListener("click", (e) => {
-    if (e.target.id != "nav-pic") {
-      dropContent.style.display = "none";
-    }
-  });
+  if (navPic) {
+    navPic.addEventListener("click", () => {
+      dropContent.style.display = "block";
+    });
+  
+    document.addEventListener("click", (e) => {
+      if (e.target.id != "nav-pic") {
+        dropContent.style.display = "none";
+      }
+    });
+  }
 });
 
 // New chat field validations
@@ -313,5 +315,17 @@ document.addEventListener("turbolinks:load", () => {
 
     passwordField.addEventListener("input", comparePasswords);
     conPasswordField.addEventListener("input", comparePasswords);
+  }
+});
+
+// Remove field with errors div
+document.addEventListener("turbolinks:load", () => {
+  let errorDivs = document.querySelectorAll(".field_with_errors");
+
+  if (errorDivs[0]) {
+    for (let i = 0; i < errorDivs.length; i++) {
+      const errorDiv = errorDivs[i];
+      errorDiv.outerHTML = errorDiv.innerHTML;
+    }
   }
 });
