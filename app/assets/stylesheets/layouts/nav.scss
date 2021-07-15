@@ -3,7 +3,7 @@ $light-blue: rgb(90, 195, 226);
 $dark-blue: rgb(0, 100, 131);
 
 #nav-clearance {
-  margin-top: 60px;
+  margin-top: 54px;
 }
 
 #nav-bar {
@@ -186,6 +186,10 @@ $dark-blue: rgb(0, 100, 131);
 }
 
 @media only screen and (max-width: 500px) {
+  #nav-clearance {
+    margin-top: 51px;
+  }
+
   .nav-icon {
     font-size: 19px;
   }
