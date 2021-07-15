@@ -68,7 +68,9 @@
 
     <div id="edit-user-password-2" class="user-edit-field">
       <%= f.label :password_confirmation, class: "edit-user-label" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "edit-user-text-field" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "edit-user-text-field", id: "con-password-field" %>
+
+      <p id="con-password-valid-txt-1" class="validations-labels">must be between 6-128 characters (0)</p>
     </div>
 
     <%= f.submit "Update", class: "edit-user-submit" %>

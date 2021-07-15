@@ -245,3 +245,46 @@ document.addEventListener("turbolinks:load", () => {
     });
   }
 });
+
+
+// Password field validations
+document.addEventListener("turbolinks:load", () => {
+  const passwordField = document.getElementById("password-field");
+  const passwordLength = document.getElementById("password-valid-txt-1");
+
+  if (passwordField) {
+    passwordLength.style.display = "none";
+    
+    passwordField.addEventListener("input", () => {
+      passwordLength.style.display = "block";
+      passwordLength.textContent = `must be between 6-128 characters (${passwordField.value.length})`;
+
+      if (passwordField.value.length >= 6 && passwordField.value.length <= 128) {
+        passwordLength.style.color = "green";
+      } else {
+        passwordLength.style.color = "red";
+      }
+    });
+  }
+});
+
+// Confirm Password field validations
+document.addEventListener("turbolinks:load", () => {
+  const conPasswordField = document.getElementById("con-password-field");
+  const conPasswordLength = document.getElementById("con-password-valid-txt-1");
+
+  if (conPasswordField) {
+    conPasswordLength.style.display = "none";
+    
+    conPasswordField.addEventListener("input", () => {
+      conPasswordLength.style.display = "block";
+      conPasswordLength.textContent = `must be between 6-128 characters (${conPasswordField.value.length})`;
+
+      if (conPasswordField.value.length >= 6 && conPasswordField.value.length <= 128) {
+        conPasswordLength.style.color = "green";
+      } else {
+        conPasswordLength.style.color = "red";
+      }
+    });
+  }
+});
