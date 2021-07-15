@@ -288,3 +288,33 @@ document.addEventListener("turbolinks:load", () => {
     });
   }
 });
+
+// matching passwords validations
+document.addEventListener("turbolinks:load", () => {
+  const passwordField = document.getElementById("password-field");
+  const conPasswordField = document.getElementById("con-password-field");
+
+  const passMatch1 = document.getElementById("password-valid-txt-2");
+  const passMatch2 = document.getElementById("con-password-valid-txt-2");
+
+  if (passwordField && conPasswordField && passMatch1 && passMatch2) {
+    passMatch1.style.display = "none";
+    passMatch2.style.display = "none";
+
+    const comparePasswords = () => {
+      passMatch1.style.display = "block";
+      passMatch2.style.display = "block";
+  
+      if (passwordField.value === conPasswordField.value) {
+        passMatch1.style.color = "green";
+        passMatch2.style.color = "green";
+      } else {
+        passMatch1.style.color = "red";
+        passMatch2.style.color = "red";
+      }
+    };
+
+    passwordField.addEventListener("input", comparePasswords);
+    conPasswordField.addEventListener("input", comparePasswords);
+  }
+});
