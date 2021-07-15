@@ -9,7 +9,10 @@
         <%= user_avatar(current_user, 50, "", "user-edit-avatar") %>
       </div>
 
-      <%= f.file_field :avatar %>
+      <div>
+        <p class="edit-user-label">Formats: (JPG, JPEG, PNG)</p>
+        <%= f.file_field :avatar %>
+      </div>
     </div>
 
     <div class="user-edit-double-field">
