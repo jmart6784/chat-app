@@ -82,3 +82,9 @@ body::-webkit-scrollbar-thumb {
 .validations-labels {
   font-size: 12px;
 }
+
+@media only screen and (max-width: 768px) {
+  .validations-labels {
+    font-size: 11px;
+  }
+}
