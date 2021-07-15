@@ -62,7 +62,7 @@
 
     <p id="change-password-btn" class="no-select">Change Password</p>
 
-    <div id="edit-user-password-1" class="user-edit-field">
+    <div id="edit-user-password-1" class="user-edit-field" style="display: none;">
       <%= f.label :password, class: "edit-user-label" %>
       <%= f.password_field :password, autocomplete: "new-password", class: "edit-user-text-field", id: "password-field" %>
       
@@ -71,7 +71,7 @@
       <p id="password-valid-txt-2" class="validations-labels">passwords must match</p>
     </div>
 
-    <div id="edit-user-password-2" class="user-edit-field">
+    <div id="edit-user-password-2" class="user-edit-field" style="display: none;">
       <%= f.label :password_confirmation, class: "edit-user-label" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "edit-user-text-field", id: "con-password-field" %>
 

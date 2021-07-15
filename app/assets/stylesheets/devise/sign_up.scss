@@ -1,0 +1,18 @@
+$light-blue: rgb(90, 195, 226);
+
+.sign-up-link {
+  border-bottom: 1px solid white;
+  width: fit-content;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.sign-up-link:hover {
+  border-bottom: 1px solid $light-blue;
+}
+
+@media only screen and (max-width: 325px) {
+  .sign-up-link {
+    font-size: 13px;
+  }
+}

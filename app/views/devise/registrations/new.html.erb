@@ -1,44 +1,66 @@
-<h2>Sign up</h2>
+<div class="user-edit-container">
+  <p class="user-edit-title">Sign up</p>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "user-edit-form"}) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
-  </div>
+    <div class="user-edit-double-field">
+      <div class="user-edit-field">
+        <%= f.label :username, class: "edit-user-label" %>
+        <%= f.text_field :username, class: "edit-user-text-field", id: "username-field" %>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
+        <p id="username-valid-txt-1" class="validations-labels">must be 4-16 characters (0)</p>
+        <p id="username-valid-txt-2" class="validations-labels">includes only letters and numbers</p>
+      </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </div>
+      <div class="user-edit-field">
+        <%= f.label :email, class: "edit-user-label" %>
+        <%= f.email_field :email, autocomplete: "email", class: "edit-user-text-field", id: "email-field" %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+        <p id="email-valid-txt-1" class="validations-labels">email must be valid</p>
+        <p id="email-valid-txt-2" class="validations-labels">email required</p>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="user-edit-double-field">
+      <div class="user-edit-field">
+        <%= f.label :first_name, class: "edit-user-label" %>
+        <%= f.text_field :first_name, class: "edit-user-text-field", id: "firstname-field" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <p id="firstname-valid-txt-1" class="validations-labels">name must be between 1-60 characters long (0)</p>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="user-edit-field">
+        <%= f.label :last_name, class: "edit-user-label" %>
+        <%= f.text_field :last_name, class: "edit-user-text-field", id: "lastname-field" %>
 
-<%= render "devise/shared/links" %>
+        <p id="lastname-valid-txt-1" class="validations-labels">name must be between 1-60 characters long (0)</p>
+      </div>
+    </div>
+
+    <div id="edit-user-password-1" class="user-edit-field">
+      <%= f.label :password, class: "edit-user-label" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "edit-user-text-field", id: "password-field" %>
+      
+      <p id="password-valid-txt-1" class="validations-labels">must be between 6-128 characters (0)</p>
+
+      <p id="password-valid-txt-2" class="validations-labels">passwords must match</p>
+    </div>
+
+    <div id="edit-user-password-2" class="user-edit-field">
+      <%= f.label :password_confirmation, class: "edit-user-label" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "edit-user-text-field", id: "con-password-field" %>
+
+      <p id="con-password-valid-txt-1" class="validations-labels">must be between 6-128 characters (0)</p>
+
+      <p id="con-password-valid-txt-2" class="validations-labels">passwords must match</p>
+    </div>
+
+
+    <%= f.submit "Sign up", class: "edit-user-submit" %>
+  <% end %>
+
+  <%= link_to "Log in", new_session_path(resource_name), class: "sign-up-link" %>
+
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "sign-up-link" %>
+</div>
