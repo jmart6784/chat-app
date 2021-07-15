@@ -14,9 +14,11 @@
   </head>
 
   <body>
-    <div id="nav-clearance">
-      <%= render "layouts/flash" %>
+    <% style = user_signed_in? ? "" : "margin: 0;" %>
+
+    <div id="nav-clearance" style="<%= style %>">
       <%= render "layouts/nav" %>
+      <%= render "layouts/flash" %>
       <%= yield %>
     </div>
   </body>

@@ -329,3 +329,29 @@ document.addEventListener("turbolinks:load", () => {
     }
   }
 });
+
+// Hide flash messages after 4 seconds
+document.addEventListener("turbolinks:load", () => {
+  let notice = document.getElementById("notice");
+  let alert = document.getElementById("alert");
+
+  if (notice) {
+    if (notice.textContent === "") {
+      notice.style.display = "none";
+    }
+
+    setTimeout(() => {
+      notice.style.display = "none";
+    }, 4000);
+  }
+
+  if (alert) {
+    if (alert.textContent === "") {
+      alert.style.display = "none";
+    }
+
+    setTimeout(() => {
+      alert.style.display = "none";
+    }, 4000);
+  }
+});
