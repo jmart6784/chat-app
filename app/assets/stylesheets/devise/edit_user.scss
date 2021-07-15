@@ -226,7 +226,23 @@ $dark-blue: rgb(0, 100, 131);
   }
 }
 
+@media only screen and (max-width: 550px) {
+  .user-edit-title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .user-edit-title {
+    font-size: 22px;
+  }
+}
+
 @media only screen and (max-width: 400px) {
+  .user-edit-title {
+    font-size: 20px;
+  }
+
   .user-edit-ava-field {
     row-gap: 10px;
     column-gap: 0px;
@@ -252,6 +268,10 @@ $dark-blue: rgb(0, 100, 131);
 }
 
 @media only screen and (max-width: 350px) {
+  .user-edit-title {
+    font-size: 18px;
+  }
+
   .edit-user-label {
     font-size: 10.5px;
   }
