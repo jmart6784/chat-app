@@ -355,3 +355,50 @@ document.addEventListener("turbolinks:load", () => {
     }, 4000);
   }
 });
+
+// Chat show view hide/show guests
+document.addEventListener("turbolinks:load", () => {
+  const guestBtn = document.getElementById("chat-show-guests-btn");
+  const guestDiv = document.getElementById("chat-show-guests-div");
+  const closeBtn = document.getElementById("close-guest-div-btn");
+
+  if (guestBtn) {
+    guestDiv.style.display = "none";
+
+    guestBtn.addEventListener("click", () => {
+      if (guestDiv.style.display === "flex") {
+        guestDiv.style.display = "none";
+      } else if (guestDiv.style.display === "none") {
+        guestDiv.style.display = "flex";
+      }
+    });
+
+    closeBtn.addEventListener("click", () => {
+      guestDiv.style.display = "none";
+    });
+  }
+});
+
+// Chat show view hide/show options
+document.addEventListener("turbolinks:load", () => {
+  const optionsBtn = document.getElementById("chat-show-options-btn");
+  const optionsDiv = document.getElementById("host-options");
+
+  if (optionsBtn) {
+    optionsDiv.style.display = "none";
+
+    optionsBtn.addEventListener("click", () => {
+      if (optionsDiv.style.display === "flex") {
+        optionsDiv.style.display = "none";
+      } else if (optionsDiv.style.display === "none") {
+        optionsDiv.style.display = "flex";
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target != optionsBtn) {
+        optionsDiv.style.display = "none";
+      }
+    });
+  }
+});

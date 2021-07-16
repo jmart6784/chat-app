@@ -1,68 +1,91 @@
-<h1>Chat show</h1>
+<div>
 
-<p>Name: <%= @chat.name %></p>
-<p>Host: <%= link_to @chat.host.username, @chat.host %></p>
-<% if @chat.host === current_user %>
-  <%= link_to "Edit", edit_chat_path(@chat) %>
-  <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to "Invite Friends", invite_path(@chat) %>
-<% else %>
-  <%= 
-    link_to "Leave", 
-    ajax_joined_chat_destroy_path(
-      chat_id: @chat.id,
-      guest_id: current_user.id,
-      host_id: @chat.host.id,
-      choice: "leave"
-    ), 
-    method: :put, 
-    remote: true, 
-    data: { confirm: "You won't be able to join back unless invited." }
-  %>
-<% end %>
+  <div class="chat-top-bar">
+  <% if @chat.host === current_user %>
+    <div class="chat-show-host-options">
+      <p id="chat-show-options-btn" class="no-select"><i class="fas fa-align-justify"></i> Options</p>
 
-<% unless @chat.users.count === 0 %>
-  <h3>Users joined:</h3>
+      <div id="host-options">
+        <%= link_to "Invite Friends", invite_path(@chat) %>
+        <%= link_to "Edit", edit_chat_path(@chat) %>
+        <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% else %>
+    <%= 
+      link_to "Leave", 
+      ajax_joined_chat_destroy_path(
+        chat_id: @chat.id,
+        guest_id: current_user.id,
+        host_id: @chat.host.id,
+        choice: "leave"
+      ), 
+      method: :put, 
+      remote: true, 
+      data: { confirm: "You won't be able to join back unless invited." },
+      class: "chat-show-leave"
+    %>
+  <% end %>
+
+    <p class="chat-show-name"><%= @chat.name %></p>
+
+    <div>
+      <p id="chat-show-guests-btn" class="no-select"><i class="fas fa-users no-select"></i> Guests</p>
+
+      <div id="chat-show-guests-div">
+        <div id="guest-inner-div">
+          <i id="close-guest-div-btn" class="fas fa-times no-select"></i>
+          <% unless @chat.users.count === 0 %>
+            <div class="guest-item-container">
+              <div class="guest-div">
+                <%= link_to @chat.host do %>
+                  <%= user_avatar(@chat.host, 40, "", "guest-avatar") %>
+                <% end %>
+                <%= link_to @chat.host.username, @chat.host, class: "guest-username-link" %>
+                <p class="guest-host-label">Host</p>
+              </div>
+
+              <% @chat.users.each do |user| %>
+                <div id=<%= "joined-user-#{user.id}" %> class="guest-div">
+                  <%= link_to user do %>
+                    <%= user_avatar(user, 40, "", "guest-avatar") %>
+                  <% end %>
+                  <%= link_to user.username, user, class: "guest-username-link" %>
+                    <% if current_user === @chat.host %>
+                      <%= 
+                        link_to "Kick", 
+                        ajax_joined_chat_destroy_path(
+                          chat_id: @chat.id,
+                          guest_id: user.id,
+                          host_id: @chat.host.id,
+                          choice: "kick",
+                          parent_html_id: "joined-user-#{user.id}"
+                        ), 
+                        method: :put, 
+                        remote: true, 
+                        data: { confirm: "Are you sure you want to kick out #{user.username}?" },
+                        class: "guest-kick-link"
+                      %>
+                    <% else %>
+                      <div></div>
+                    <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div>
-    <div>
-      <% host_status = @chat.host.online_status %>
-      <span class="<%= "status-dot user-#{@chat.host.id}-status #{host_status.status}" %>">•</span>
-      <%= user_avatar(@chat.host) %> 
-      <%= link_to @chat.host.username, @chat.host %>
-    </div>
+    <%= render "messages/form" %>
+  </div>
 
-    <% @chat.users.each do |user| %>
-      <div id=<%= "joined-user-#{user.id}" %>>
-        <span class="<%= "status-dot user-#{user.id}-status #{user.online_status.status}" %>">•</span>
-        <%= user_avatar(user) %>
-        <%= link_to user.username, user %>
-          <% if current_user === @chat.host %>
-            <%= 
-              link_to "Kick", 
-              ajax_joined_chat_destroy_path(
-                chat_id: @chat.id,
-                guest_id: user.id,
-                host_id: @chat.host.id,
-                choice: "kick",
-                parent_html_id: "joined-user-#{user.id}"
-              ), 
-              method: :put, 
-              remote: true, 
-              data: { confirm: "Are you sure you want to kick out #{user.username}?" }
-            %>
-          <% end %>
-      </div>
+  <div id="chat-box" data-user-id="<%= current_user.id %>" data-chat-id="<%= @chat.id %>">
+    <% @chat.messages.order('created_at ASC').each do |message| %>
+      <%= render "messages/message", locals: {message: message} %>
     <% end %>
   </div>
-<% end %>
 
-<div>
-  <%= render "messages/form" %>
-</div>
-
-<div id="chat-box" data-user-id="<%= current_user.id %>" data-chat-id="<%= @chat.id %>">
-  <% @chat.messages.order('created_at ASC').each do |message| %>
-    <%= render "messages/message", locals: {message: message} %>
-  <% end %>
 </div>
