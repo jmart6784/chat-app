@@ -3,7 +3,7 @@
   <div class="chat-top-bar">
   <% if @chat.host === current_user %>
     <div class="chat-show-host-options">
-      <p id="chat-show-options-btn" class="no-select"><i class="fas fa-align-justify"></i> Options</p>
+      <p id="chat-show-options-btn" class="no-select"><i id="options-dash" class="fas fa-align-justify"></i> <span class="top-bar-icon-text">Options</span></p>
 
       <div id="host-options">
         <%= link_to "Invite Friends", invite_path(@chat) %>
@@ -30,20 +30,21 @@
     <p class="chat-show-name"><%= @chat.name %></p>
 
     <div>
-      <p id="chat-show-guests-btn" class="no-select"><i class="fas fa-users no-select"></i> Guests</p>
+      <p id="chat-show-guests-btn" class="no-select"><i class="fas fa-users no-select"></i> <span class="top-bar-icon-text">Guests</span></p>
 
       <div id="chat-show-guests-div">
+        <i id="close-guest-div-btn" class="fas fa-times no-select"></i>
         <div id="guest-inner-div">
-          <i id="close-guest-div-btn" class="fas fa-times no-select"></i>
+          <div class="guest-div">
+            <%= link_to @chat.host do %>
+              <%= user_avatar(@chat.host, 40, "", "guest-avatar") %>
+            <% end %>
+            <%= link_to @chat.host.username, @chat.host, class: "guest-username-link" %>
+            <p class="guest-host-label">Host</p>
+          </div>
+
           <% unless @chat.users.count === 0 %>
             <div class="guest-item-container">
-              <div class="guest-div">
-                <%= link_to @chat.host do %>
-                  <%= user_avatar(@chat.host, 40, "", "guest-avatar") %>
-                <% end %>
-                <%= link_to @chat.host.username, @chat.host, class: "guest-username-link" %>
-                <p class="guest-host-label">Host</p>
-              </div>
 
               <% @chat.users.each do |user| %>
                 <div id=<%= "joined-user-#{user.id}" %> class="guest-div">

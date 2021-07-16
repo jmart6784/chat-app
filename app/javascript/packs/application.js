@@ -382,17 +382,25 @@ document.addEventListener("turbolinks:load", () => {
 // Chat show view hide/show options
 document.addEventListener("turbolinks:load", () => {
   const optionsBtn = document.getElementById("chat-show-options-btn");
+  const optionsIcon = document.getElementById("options-dash");
   const optionsDiv = document.getElementById("host-options");
 
   if (optionsBtn) {
     optionsDiv.style.display = "none";
 
-    optionsBtn.addEventListener("click", () => {
+    const handleAppearance = () => {
       if (optionsDiv.style.display === "flex") {
         optionsDiv.style.display = "none";
       } else if (optionsDiv.style.display === "none") {
         optionsDiv.style.display = "flex";
       }
+    };
+
+    optionsIcon.addEventListener("click",  handleAppearance);
+    optionsBtn.addEventListener("click", () => {
+      setTimeout(() => {
+        handleAppearance();
+      }, 100);
     });
 
     document.addEventListener("click", (e) => {
