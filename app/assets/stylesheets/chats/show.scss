@@ -199,7 +199,7 @@ $dark-blue: rgb(0, 100, 131);
     display: none;
   }
 
-  #chat-show-options-btn, .chat-show-leave, .chat-show-name, #chat-show-guests-btn  {
+  #chat-show-options-btn, .chat-show-leave, .chat-show-name, #chat-show-guests-btn, .guest-username-link   {
     font-size: 14px;
   }
 
@@ -227,7 +227,7 @@ $dark-blue: rgb(0, 100, 131);
     padding: 10px;
   }
 
-  .chat-show-name {
+  .chat-show-name, .guest-username-link  {
     font-size: 13px;
   }
 }
@@ -242,16 +242,20 @@ $dark-blue: rgb(0, 100, 131);
   .chat-show-name {
     font-size: 10.5px;
   }
+
+  .guest-username-link  {
+    font-size: 12px;
+  }
 }
 
 @media only screen and (max-width: 310px) {
-  .chat-show-name {
+  .chat-show-name, .guest-username-link {
     font-size: 10px;
   }
 }
 
 @media only screen and (max-width: 291px) {
-  .chat-show-name {
+  .chat-show-name, .guest-username-link {
     font-size: 9.5px;
   }
 }
