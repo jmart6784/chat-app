@@ -1,31 +1,31 @@
-<div>
+<div class="chat-show-container">
 
   <div class="chat-top-bar">
-  <% if @chat.host === current_user %>
-    <div class="chat-show-host-options">
-      <p id="chat-show-options-btn" class="no-select"><i id="options-dash" class="fas fa-align-justify"></i> <span class="top-bar-icon-text">Options</span></p>
+    <% if @chat.host === current_user %>
+      <div class="chat-show-host-options">
+        <p id="chat-show-options-btn" class="no-select"><i id="options-dash" class="fas fa-align-justify"></i> <span class="top-bar-icon-text">Options</span></p>
 
-      <div id="host-options">
-        <%= link_to "Invite Friends", invite_path(@chat) %>
-        <%= link_to "Edit", edit_chat_path(@chat) %>
-        <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div id="host-options">
+          <%= link_to "Invite Friends", invite_path(@chat) %>
+          <%= link_to "Edit", edit_chat_path(@chat) %>
+          <%= link_to "Delete", @chat, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
-    </div>
-  <% else %>
-    <%= 
-      link_to "Leave", 
-      ajax_joined_chat_destroy_path(
-        chat_id: @chat.id,
-        guest_id: current_user.id,
-        host_id: @chat.host.id,
-        choice: "leave"
-      ), 
-      method: :put, 
-      remote: true, 
-      data: { confirm: "You won't be able to join back unless invited." },
-      class: "chat-show-leave"
-    %>
-  <% end %>
+    <% else %>
+      <%= 
+        link_to "Leave", 
+        ajax_joined_chat_destroy_path(
+          chat_id: @chat.id,
+          guest_id: current_user.id,
+          host_id: @chat.host.id,
+          choice: "leave"
+        ), 
+        method: :put, 
+        remote: true, 
+        data: { confirm: "You won't be able to join back unless invited." },
+        class: "chat-show-leave"
+      %>
+    <% end %>
 
     <p class="chat-show-name"><%= @chat.name %></p>
 
@@ -79,14 +79,12 @@
     </div>
   </div>
 
-  <div>
-    <%= render "messages/form" %>
-  </div>
-
   <div id="chat-box" data-user-id="<%= current_user.id %>" data-chat-id="<%= @chat.id %>">
     <% @chat.messages.order('created_at ASC').each do |message| %>
       <%= render "messages/message", locals: {message: message} %>
     <% end %>
   </div>
+
+  <%= render "messages/form" %>
 
 </div>

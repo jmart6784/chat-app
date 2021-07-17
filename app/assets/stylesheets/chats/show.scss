@@ -10,6 +10,10 @@ $dark-blue: rgb(0, 100, 131);
   }
 }
 
+.chat-show-container {
+  position: relative;
+}
+
 .chat-top-bar {
   width: 100%;
   display: flex;

@@ -1,9 +1,9 @@
-<h3>Message form</h3>
+<div class="message-form-container">
+  <%= form_for [ @chat, @message ], html: {remote: true, id: "message-form"} do |f| %>
+    <%= f.text_area :content, placeholder: "message...", id: "message-input-field" %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :chat_id, value: @chat.id %>
 
-<%= form_for [ @chat, @message ], html: {remote: true} do |f| %>
-  <%= f.text_field :content, placeholder: "message...", id: "message-input-field" %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :chat_id, value: @chat.id %>
-
-  <%= f.submit "Send" %>
-<% end %>
+    <%= f.submit "Send", id: "message-send" %>
+  <% end %>
+</div>
