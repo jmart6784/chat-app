@@ -410,3 +410,11 @@ document.addEventListener("turbolinks:load", () => {
     });
   }
 });
+
+// Auto scroll to bottom of chat box
+document.addEventListener("turbolinks:load", () => {
+  const chatBox = document.getElementById("chat-box");
+  if (chatBox) {
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+});
