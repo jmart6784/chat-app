@@ -1,9 +1,16 @@
 <% message = locals[:message] %>
 
 <% is_author = message.user === current_user %>
+<% message_style = is_author ? "message-me" : "message-them" %>
 
-<p id="message-<%= message.id %>">
-  <%= message.content %> by: 
-  <%= is_author ? "Me" :message.user.username %> 
-  <%= link_to "Delete", chat_message_path(@chat, message), method: :delete, remote: true, data: { confirm: 'Are you sure?' } if is_author %>
-</p>
+<div id="message-<%= message.id %>" class="message-div">
+  <p class="message-p <%= message_style %>"><%= message.content %></p>
+
+  <% if is_author %>
+    <%= link_to chat_message_path(@chat, message), method: :delete, remote: true, class: "message-delete", data: { confirm: 'Are you sure?' } do %>
+      <i class="fas fa-trash message-delete"></i>
+    <% end %>
+  <% else %>
+    <%= link_to message.user.username, message.user, class: "message-username" %>
+  <% end %>
+</div>

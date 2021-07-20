@@ -179,6 +179,34 @@ $dark-blue: rgb(0, 100, 131);
   border-radius: 5px;
 }
 
+.chat-show-messages-div {
+  background-color: rgb(32, 32, 32);
+  height: 85vh;
+  width: 50%;
+  max-width: 924px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  padding: 50px 12px 50px 12px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(90, 90, 90, 0.7) rgba(0, 0, 0, 0);
+}
+
+.chat-show-messages-div::-webkit-scrollbar {
+  width: 12px;
+}
+
+.chat-show-messages-div::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
+
+.chat-show-messages-div::-webkit-scrollbar-thumb {
+  background-color: rgba(90, 90, 90, 0.7);
+  border-radius: 20px;
+}
+
 @media only screen and (max-width: 1200px) {
   #guest-inner-div, #close-guest-div-btn {
     width: 55%;
