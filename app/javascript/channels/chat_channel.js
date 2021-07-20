@@ -22,13 +22,20 @@ document.addEventListener('turbolinks:load', () => {
         if (data.action === "create") {
           if (data.author_id === currentUserID) {
             chatBox.innerHTML += `
-            <p id="message-${data.message_id}">
-              ${data.message} by: Me <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/chats/${data.chat_id}/messages/${data.message_id}">Delete</a>
-            </p>
+            <div id="message-${data.message_id}" class="message-div">
+              <p class="message-p message-me">${data.message}</p> 
+              <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/chats/${data.chat_id}/messages/${data.message_id}" class="message-delete">
+                <i class="fas fa-trash message-delete"></i>
+              </a>
+            </div>
             `;
           } else {
             chatBox.innerHTML += `
-            <p id="message-${data.message_id}">${data.message} by: ${data.username}</p>
+            <div id="message-${data.message_id}" class="message-div">
+              <p class="message-p message-them">${data.message}</p> 
+
+              <a class="message-username" href="/users/${data.author_id}">${data.username}</a>
+            </div>
             `;
           }
         } else if (data.action === "destroy") {
