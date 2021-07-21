@@ -179,11 +179,16 @@ $dark-blue: rgb(0, 100, 131);
   border-radius: 5px;
 }
 
+.chat-parent {
+  width: 50%;
+  margin: auto;
+  max-width: 924px;
+  border: 1px solid rgb(138, 138, 138);
+}
+
 .chat-show-messages-div {
   background-color: rgb(32, 32, 32);
   height: 85vh;
-  width: 50%;
-  max-width: 924px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -207,9 +212,43 @@ $dark-blue: rgb(0, 100, 131);
   border-radius: 20px;
 }
 
+@media only screen and (max-width: 1700px) {
+  .chat-parent {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .chat-parent, #message-form {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .chat-parent, #message-form {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .chat-parent, #message-form {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .chat-parent, #message-form {
+    width: 75%;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   #guest-inner-div, #close-guest-div-btn {
     width: 55%;
+  }
+
+  .chat-parent, #message-form {
+    width: 80%;
   }
 }
 
@@ -217,11 +256,19 @@ $dark-blue: rgb(0, 100, 131);
   #guest-inner-div, #close-guest-div-btn {
     width: 60%;
   }
+
+  .chat-parent, #message-form {
+    width: 85%;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
   #guest-inner-div, #close-guest-div-btn {
     width: 65%;
+  }
+
+  .chat-parent, #message-form {
+    width: 90%;
   }
 }
 
@@ -237,6 +284,11 @@ $dark-blue: rgb(0, 100, 131);
   #guest-inner-div, #close-guest-div-btn {
     width: 80%;
     max-width: 900px;
+  }
+
+  .chat-parent, #message-form {
+    width: 100%;
+    border: 0px;
   }
 }
 

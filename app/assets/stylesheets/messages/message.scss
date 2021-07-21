@@ -39,3 +39,42 @@
 .message-delete:hover {
   color: white;
 }
+
+@media only screen and (max-width: 900px) {
+  .message-p {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .message-p {
+    max-width: 60%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .message-p {
+    max-width: 65%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .message-p {
+    max-width: 70%;
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .message-p {
+    max-width: 75%;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .message-p {
+    max-width: 80%;
+    font-size: 11px;
+  }
+}

@@ -40,6 +40,61 @@ $dark-blue: rgb(0, 100, 131);
   border: 0px;
 }
 
+@media only screen and (max-width: 1700px) {
+  #message-form {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  #message-form {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  #message-form {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  #message-form {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  #message-form {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #message-form {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #message-form {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #message-form {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #message-form {
+    width: 100%;
+    border: 0px;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   #message-send {
     font-size: 15px;
