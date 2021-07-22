@@ -95,9 +95,22 @@ $dark-blue: rgb(0, 100, 131);
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   #message-send {
     font-size: 15px;
     padding: 5px 15px 5px 15px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #message-send {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #message-send {
+    font-size: 13.5px;
+    padding: 5px 12px 5px 12px;
   }
 }
