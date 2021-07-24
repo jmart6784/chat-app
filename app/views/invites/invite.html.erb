@@ -21,7 +21,7 @@
           <%= link_to friend.username, friend, class: "chat-invite-username" %>
           
           <% if invite_exists?(current_user, friend, @chat) %>
-            <p class="chat-invite-sent chat-invite-btn">Sent</p>
+            <p class="chat-invite-sent chat-invite-btn"><i class="fas fa-clock chat-invite-sent"></i> Sent</p>
           <% else %>
             <%= link_to ajax_invite_create_path(host_id: current_user.id, guest_id: friend.id, chat_id: @chat.id, html_id: "invite-user-#{friend.id}"), remote: true, method: :put, id: "invite-user-#{friend.id}", class: "chat-invite-link chat-invite-btn" do %>
               <i class="fas fa-plus chat-invite-btn"></i> Invite

@@ -1,7 +1,7 @@
 var link = document.getElementById("<%= params[:html_id] %>");
 
 <% if @invite_created %>
-  link.textContent = "Sent";
+  link.textContent = '<i class="fas fa-clock chat-invite-sent "></i> Sent';
   link.outerHTML = '<p class="chat-invite-sent chat-invite-btn">' + link.textContent + '</p>';
 <% else %>
   link.textContent = "Add";
