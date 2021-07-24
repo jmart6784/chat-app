@@ -1,4 +1,7 @@
 <div class="message-form-container">
+  <div id="message-character-counter-div">
+    <p id="message-char-text">0/640</p>
+  </div>
   <%= form_for [ @chat, @message ], html: {remote: true, id: "message-form"} do |f| %>
     <%= f.text_area :content, placeholder: "message...", id: "message-input-field" %>
     <%= f.hidden_field :user_id, value: current_user.id %>

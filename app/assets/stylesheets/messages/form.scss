@@ -10,6 +10,23 @@ $dark-blue: rgb(0, 100, 131);
   z-index: 998;
 }
 
+#message-character-counter-div {
+  width: 50%;
+  max-width: 924px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#message-char-text {
+  width: fit-content;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  border-radius: 5px;
+}
+
 #message-form {
   width: 50%;
   max-width: 924px;
@@ -41,55 +58,55 @@ $dark-blue: rgb(0, 100, 131);
 }
 
 @media only screen and (max-width: 1700px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 55%;
   }
 }
 
 @media only screen and (max-width: 1600px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 60%;
   }
 }
 
 @media only screen and (max-width: 1500px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 65%;
   }
 }
 
 @media only screen and (max-width: 1400px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 1300px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 75%;
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 80%;
   }
 }
 
 @media only screen and (max-width: 1100px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 85%;
   }
 }
 
 @media only screen and (max-width: 1000px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 90%;
   }
 }
 
 @media only screen and (max-width: 900px) {
-  #message-form {
+  #message-form, #message-character-counter-div {
     width: 100%;
     border: 0px;
   }
