@@ -72,6 +72,10 @@ $dark-blue: rgb(0, 100, 131);
 
 .chat-show-name {
   font-size: 15px;
+  width: 100%;
+  max-width: 600px;
+  word-wrap: break-word;
+  text-align: center;
 }
 
 #chat-show-guests-btn {
@@ -322,12 +326,13 @@ $dark-blue: rgb(0, 100, 131);
 @media only screen and (max-width: 400px) {
   .chat-show-name {
     font-size: 12px;
+    max-width: 275px;
   }
 }
 
 @media only screen and (max-width: 350px) {
   .chat-show-name {
-    font-size: 10.5px;
+    max-width: 200px;
   }
 
   .guest-div {
@@ -342,17 +347,5 @@ $dark-blue: rgb(0, 100, 131);
 
   .guest-username-link, .guest-host-label, .guest-kick-link  {
     font-size: 11.5px;
-  }
-}
-
-@media only screen and (max-width: 310px) {
-  .chat-show-name {
-    font-size: 10px;
-  }
-}
-
-@media only screen and (max-width: 291px) {
-  .chat-show-name {
-    font-size: 9.5px;
   }
 }
