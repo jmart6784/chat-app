@@ -418,3 +418,22 @@ document.addEventListener("turbolinks:load", () => {
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 });
+
+// Chat message character counter
+document.addEventListener("turbolinks:load", () => {
+  const charCounter = document.getElementById("message-char-text");
+  const messageInput = document.getElementById("message-input-field");
+
+  if (messageInput) {
+    messageInput.addEventListener("input", () => {
+      if (messageInput.value.length <= 640) {
+        charCounter.style.color = "white";
+      } else {
+        charCounter.style.color = "red";
+        messageInput.value = messageInput.value.substring(0, messageInput.value.length - 1);
+      }
+
+      charCounter.textContent = `${messageInput.value.length}/640`;
+    });
+  }
+});
