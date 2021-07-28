@@ -18,6 +18,15 @@ document.addEventListener('turbolinks:load', () => {
     
       received(data) {
         // Called when there's incoming data on the websocket for this channel
+        let height = chatBox.clientHeight;
+        let scrollHeight = chatBox.scrollHeight - height;
+        let scrollTop = chatBox.scrollTop;
+        let percent = Math.floor(scrollTop / scrollHeight * 100);
+
+        // Scroll to bottom if user is near bottom of chat box
+        if (percent >= 70) {
+          chatBox.lastElementChild.scrollIntoView();
+        }
   
         if (data.action === "create") {
           if (data.author_id === currentUserID) {

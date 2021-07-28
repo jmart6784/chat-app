@@ -24,7 +24,7 @@ const chatShow = () => {
   // Auto scroll to bottom of chat box
   const chatBox = document.getElementById("chat-box");
   if (chatBox) {
-    chatBox.scrollTop = chatBox.scrollHeight;
+    chatBox.lastElementChild.scrollIntoView();
   }
 
   // Chat message character counter
