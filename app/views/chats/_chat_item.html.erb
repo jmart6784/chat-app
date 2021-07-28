@@ -2,7 +2,11 @@
 
 <div class="chat-item-div">
   <%= link_to chat.host do %>
-    <%= user_avatar(chat.host, 55, "", "chat-item-avatar") %>
+    <% if current_user === chat.host %>
+      <%= user_avatar(chat.host, 55, "", "chat-item-avatar") %>
+    <% else %>
+      <%= user_avatar(chat.host, 55, "", "chat-item-avatar #{chat.host.online_status.status} user-#{chat.host.id}-status") %>
+    <% end %>
   <% end %>
 
   <div class="chat-item-details div-link" onclick='location.href="<%= chat_path(chat) %>";'>
