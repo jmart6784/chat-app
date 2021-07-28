@@ -16,7 +16,7 @@
         <% next if chat_joined?(friend, @chat) %>
 
         <div class="chat-invite-item-div">
-          <%= user_avatar(friend, 100, "", "chat-invite-avatar") %>
+          <%= user_avatar(friend, 100, "", "chat-invite-avatar #{friend.online_status.status} user-#{friend.id}-status") %>
 
           <%= link_to friend.username, friend, class: "chat-invite-username" %>
           
