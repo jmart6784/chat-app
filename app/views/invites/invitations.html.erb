@@ -13,7 +13,7 @@
 
             <div class="invite-top-div">
               <%= link_to invite.host do %>
-                <%= user_avatar(invite.host, 50, "", "invite-avatar") %>
+                <%= user_avatar(invite.host, 50, "", "invite-avatar #{invite.host.online_status.status} user-#{invite.host.id}-status") %>
               <% end %>
 
               <p class="invite-description">
