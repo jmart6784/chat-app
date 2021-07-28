@@ -2,7 +2,7 @@
 
   <div class="user-opt-div">
     <%= link_to user do %>
-      <%= user_avatar(user, 80, "", "user-opt-ava") %>
+      <%= user_avatar(user, 80, "", "user-opt-ava #{user.online_status.status} user-#{user.id}-status") %>
     <% end %>
 
     <%= link_to user.username, user, class: "user-opt-username" %>
