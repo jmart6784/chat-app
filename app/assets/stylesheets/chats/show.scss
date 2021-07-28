@@ -2,14 +2,6 @@ $blue: rgb(0, 155, 202);
 $light-blue: rgb(90, 195, 226);
 $dark-blue: rgb(0, 100, 131);
 
-.status-dot {
-  font-size: 50px;
-  color: rgb(109, 109, 109);
-  &.online {
-    color: rgb(60, 255, 0);
-  }
-}
-
 .chat-show-container {
   position: relative;
 }

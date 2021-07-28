@@ -37,7 +37,8 @@
         <div id="guest-inner-div">
           <div class="guest-div">
             <%= link_to @chat.host do %>
-              <%= user_avatar(@chat.host, 40, "", "guest-avatar") %>
+              <% host_status = @chat.host.online_status %>
+              <%= user_avatar(@chat.host, 40, "", "guest-avatar #{host_status.status} user-#{@chat.host.id}-status") %>
             <% end %>
             <%= link_to @chat.host.username, @chat.host, class: "guest-username-link" %>
             <p class="guest-host-label">Host</p>
@@ -49,7 +50,8 @@
               <% @chat.users.each do |user| %>
                 <div id=<%= "joined-user-#{user.id}" %> class="guest-div">
                   <%= link_to user do %>
-                    <%= user_avatar(user, 40, "", "guest-avatar") %>
+                    <% user_status = user.online_status %>
+                    <%= user_avatar(user, 40, "", "guest-avatar #{user_status.status} user-#{user.id}-status") %>
                   <% end %>
                   <%= link_to user.username, user, class: "guest-username-link" %>
                     <% if current_user === @chat.host %>
