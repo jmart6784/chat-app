@@ -18,6 +18,10 @@ document.addEventListener('turbolinks:load', () => {
     
       received(data) {
         // Called when there's incoming data on the websocket for this channel
+        if (data.message.length === 0) {
+          return
+        }
+
         let height = chatBox.clientHeight;
         let scrollHeight = chatBox.scrollHeight - height;
         let scrollTop = chatBox.scrollTop;
