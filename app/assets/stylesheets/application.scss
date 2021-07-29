@@ -91,6 +91,14 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid rgb(170, 170, 170);
 }
 
+.red {
+  color: rgb(255, 72, 0);
+}
+
+.white {
+  color: white;
+}
+
 @media only screen and (max-width: 768px) {
   .validations-labels {
     font-size: 11px;
