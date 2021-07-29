@@ -29,7 +29,7 @@ document.addEventListener('turbolinks:load', () => {
 
         // Scroll to bottom if user is near bottom of chat box
         if (percent >= 70) {
-          chatBox.lastElementChild.scrollIntoView();
+          chatBox.scrollTop = chatBox.scrollHeight;
         }
   
         if (data.action === "create") {
