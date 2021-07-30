@@ -28,7 +28,7 @@
       <% end %>
     
       <%= link_to invitations_path, class: "nav-link" do %>
-        <i class="fas fa-envelope nav-icon <%= current_user.invites_as_guest.count === 0 ? "white" : "red" %>"></i> <span class="nav-link-text">Invites</span>
+        <i id="invite-nav-icon" class="fas fa-envelope nav-icon <%= current_user.invites_as_guest.count === 0 ? "white" : "red" %>"></i> <span class="nav-link-text">Invites</span>
       <% end %>
 
       <div class="dropdown">

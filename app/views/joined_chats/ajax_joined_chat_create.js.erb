@@ -2,6 +2,14 @@ var linkContainer = document.getElementById("<%= params[:html_id] %>");
 var parentDiv = document.getElementById("<%= params[:parent_html_id] %>");
 var invitesContainer = document.getElementById("invites-container");
 
+var inviteIcon = document.getElementById("invite-nav-icon");
+
+if (inviteIcon) {
+  <% if current_user.invites_as_guest.count === 0 %>
+    inviteIcon.style.color = "white";
+  <% end %>
+}
+
 <% if @is_created %>
   linkContainer.innerHTML = ``;
   linkContainer.innerHTML = `
