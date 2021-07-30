@@ -24,7 +24,7 @@
       <% end %>
 
       <%= link_to friend_requests_path, class: "nav-link" do %>
-        <i class="fas fa-user-plus nav-icon <%= current_user.requests_as_receiver.count === 0 ? "white" : "red" %>"></i> <span class="nav-link-text">Friend Requests</span>
+        <i id="fr-nav-icon" class="fas fa-user-plus nav-icon <%= current_user.requests_as_receiver.count === 0 ? "white" : "red" %>"></i> <span class="nav-link-text">Friend Requests</span>
       <% end %>
     
       <%= link_to invitations_path, class: "nav-link" do %>

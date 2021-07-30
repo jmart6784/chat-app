@@ -1,6 +1,14 @@
 var parentDiv = document.getElementById("<%= params[:parent_div] %>");
 var optionsDiv = document.getElementById("<%= params[:options_div] %>");
 
+var frIcon = document.getElementById("fr-nav-icon");
+
+if (frIcon) {
+  <% if current_user.requests_as_receiver.count === 0 %>
+    frIcon.style.color = "white";
+  <% end %>
+}
+
 <% if params[:choice] === "Accept" %>
   var content = `
     <a
