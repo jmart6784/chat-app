@@ -41,8 +41,17 @@ class FriendshipsController < ApplicationController
       user_b: current_user.id
     )
 
-    friendship1.destroy unless friendship1.nil?
-    friendship2.destroy unless friendship2.nil?
+    unless friendship1.nil?
+      friendship1.destroy
+      Invite.where(host_id: current_user.id, guest_id: user.id).destroy_all
+      Invite.where(host_id: user.id, guest_id: current_user.id).destroy_all
+    end
+
+    unless friendship2.nil?
+      friendship2.destroy
+      Invite.where(host_id: current_user.id, guest_id: user.id).destroy_all
+      Invite.where(host_id: user.id, guest_id: current_user.id).destroy_all
+    end
 
     respond_to do |format|
       format.js {}
