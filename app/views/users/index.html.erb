@@ -1,24 +1,40 @@
-<% if @users.count === 0 %>
-  <div class="no-chats-div">
-    <p class="no-chats-p">No other users yet</p>
-  </div>
-<% else %>
-  <%= form_tag(users_path, method: :get) do %>
-    <%= text_field_tag(:search, params[:search], placeholder: "search") %>
+<% if params[:search] && @users.length === 0 %>
+  <div>
+    <div>
+      <%= form_tag(users_path, method: :get) do %>
+        <%= text_field_tag(:search, params[:search], placeholder: "search") %>
 
-    <button type="submit" name="commit">
-      Search
-    </button>
-  <% end %>
-
-  <div class="user-index-div">
-    <p class="user-index-title">Find new friends</p>
-    <div class="user-options-div">
-      <% @users.each do |user| %>
-        <% next if current_user === user %>
-
-        <%= render "global_partials/user_request_options", locals: {user: user} %>
+        <button type="submit" name="commit">
+          Search
+        </button>
       <% end %>
+
+      <p>No Results Found For "<%= params[:search] %>"</p>
     </div>
   </div>
+<% else %>
+  <% if @users.count === 0 %>
+    <div class="no-chats-div">
+      <p class="no-chats-p">No other users yet</p>
+    </div>
+  <% else %>
+    <%= form_tag(users_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search], placeholder: "search") %>
+
+      <button type="submit" name="commit">
+        Search
+      </button>
+    <% end %>
+
+    <div class="user-index-div">
+      <p class="user-index-title">Find new friends</p>
+      <div class="user-options-div">
+        <% @users.each do |user| %>
+          <% next if current_user === user %>
+
+          <%= render "global_partials/user_request_options", locals: {user: user} %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
