@@ -1,7 +1,9 @@
-<%= form_tag(users_path, method: :get) do %>
-  <%= text_field_tag(:search, params[:search], placeholder: "search") %>
+<div id="user-search-div">
+  <%= form_tag(users_path, method: :get, id: "user-search-form") do %>
+    <%= text_field_tag(:search, params[:search], placeholder: "search", id: "user-search-input") %>
 
-  <button type="submit" name="commit">
-    Search
-  </button>
-<% end %>
+    <button type="submit" name="commit" id="user-search-btn">
+      <i class="fas fa-search user-search-icon"></i>
+    </button>
+  <% end %>
+</div>
