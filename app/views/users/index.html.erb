@@ -1,13 +1,7 @@
 <% if params[:search] && @users.length === 0 %>
   <div>
     <div>
-      <%= form_tag(users_path, method: :get) do %>
-        <%= text_field_tag(:search, params[:search], placeholder: "search") %>
-
-        <button type="submit" name="commit">
-          Search
-        </button>
-      <% end %>
+      <%= render "users/search" %>
 
       <p>No Results Found For "<%= params[:search] %>"</p>
     </div>
@@ -18,13 +12,7 @@
       <p class="no-chats-p">No other users yet</p>
     </div>
   <% else %>
-    <%= form_tag(users_path, method: :get) do %>
-      <%= text_field_tag(:search, params[:search], placeholder: "search") %>
-
-      <button type="submit" name="commit">
-        Search
-      </button>
-    <% end %>
+    <%= render "users/search" %>
 
     <div class="user-index-div">
       <p class="user-index-title">Find new friends</p>
