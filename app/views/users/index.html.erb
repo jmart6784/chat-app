@@ -1,10 +1,13 @@
 <% if params[:search] && @users.length === 0 %>
-  <div>
-    <div>
-      <%= render "users/search" %>
-
-      <p>No Results Found For "<%= params[:search] %>"</p>
-    </div>
+  <%= render "users/search" %>
+  
+  <div class="no-users-div">
+    <p class="no-users-title">No Results Found For</p>
+    <% if params[:search].length < 30 %>
+      <P class="no-user-params">"<%= params[:search] %>"</P>
+    <% else %>
+      <P class="no-user-params">"<%= params[:search][0..29] %>..."</P>
+    <% end %>
   </div>
 <% else %>
   <% if @users.count === 0 %>

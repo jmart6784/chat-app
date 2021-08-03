@@ -8,3 +8,51 @@
   text-align: center;
   margin-bottom: 50px;
 }
+
+.no-users-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.no-users-title {
+  font-size: 20px;
+}
+
+.no-user-params {
+  font-size: 15px;
+  font-weight: 100;
+}
+
+@media only screen and (max-width: 500px) {
+  .no-users-title {
+    font-size: 18px;
+  }
+  
+  .no-user-params {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .no-users-title {
+    font-size: 16px;
+  }
+  
+  .no-user-params {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .no-users-title {
+    font-size: 15px;
+  }
+  
+  .no-user-params {
+    font-size: 10.5px;
+  }
+}
