@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
 
   def friends
     user = User.find(params[:id])
-    @friends = friend_list(user)
+    @friends = friend_list(user).paginate(page: params[:page], per_page: 20)
   end
 
   def ajax_friendship

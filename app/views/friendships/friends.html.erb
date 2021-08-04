@@ -12,4 +12,8 @@
       <% end %>
     </div>
   </div>
+
+  <div class="paginate-pages-div">
+    <%= will_paginate @friends, inner_window: 1, outer_window: 0, :previous_label => '◀', :next_label => '▶' %>
+  </div>
 <% end %>

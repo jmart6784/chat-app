@@ -1,0 +1,45 @@
+$light-blue: rgb(90, 195, 226);
+
+.paginate-pages-div {
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 15px;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  border: 3px solid rgba(0, 0, 0, 0.0);
+}
+
+.pagination a:hover {
+  background-color: $light-blue;
+  border: 3px solid $light-blue;
+}
+
+.current {
+  text-decoration: none;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  border: 3px solid $light-blue;
+}
+
+.next_page, .previous_page {
+  background-color: $light-blue;
+}
+
+.next_page.disabled, .previous_page.disabled {
+  background-color: rgba(0, 0, 0, 0.0);
+  color: gray;
+}
