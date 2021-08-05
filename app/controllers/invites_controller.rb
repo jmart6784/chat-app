@@ -3,6 +3,7 @@ class InvitesController < ApplicationController
     @chat = Chat.find(params[:id])
     redirect_to root_path unless current_user.hosted_chats.include?(@chat)
     @friends = friend_list(current_user)
+    @friends = @friends.paginate(page: params[:page], per_page: 21)
   end
 
   def invitations

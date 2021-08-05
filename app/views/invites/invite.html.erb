@@ -33,6 +33,8 @@
       <% end %>
     </div>
 
+    <%= render "global_partials/will_paginate", locals: {data: @friends, inner_window: 1, outer_window: 0, previous_label: '◀', next_label: '▶'} %>
+
     <% if @friends.count === already_joined_count %>
       <div class="invite-chat-no-more-remaining">
         <p class="no-chats-p">No more friends to invite</p>
