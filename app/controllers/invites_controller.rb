@@ -8,6 +8,7 @@ class InvitesController < ApplicationController
 
   def invitations
     @invites = current_user.invites_as_guest
+    @invites = @invites.paginate(page: params[:page], per_page: 21)
   end
 
   def ajax_invite_create
