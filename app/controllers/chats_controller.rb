@@ -13,6 +13,7 @@ class ChatsController < ApplicationController
 
   def joined_chats
     @chats = current_user.chats
+    @chats = @chats.paginate(page: params[:page], per_page: 30)
   end
 
   def show

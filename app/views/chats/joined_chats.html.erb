@@ -11,4 +11,6 @@
       <%= render "chats/chat_item", locals: {chat: chat} %>
     <% end %>
   </div>
+
+  <%= render "global_partials/will_paginate", locals: {data: @chats, inner_window: 1, outer_window: 0, previous_label: '◀', next_label: '▶'} %>
 <% end %>
