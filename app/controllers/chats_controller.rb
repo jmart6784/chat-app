@@ -3,6 +3,7 @@ class ChatsController < ApplicationController
 
   def index
     @chats = current_user.hosted_chats + current_user.chats
+    @chats = @chats.paginate(page: params[:page], per_page: 30)
   end
 
   def hosted_chats
