@@ -17,9 +17,9 @@ class UsersController < ApplicationController
       end
 
       @users.uniq!
-      @users = @users.paginate(page: params[:page], per_page: 21)
+      @users = @users.paginate(page: params[:page], per_page: 1)
     else
-      @users = User.all.paginate(page: params[:page], per_page: 21)
+      @users = User.all.paginate(page: params[:page], per_page: 1)
     end
   end
 

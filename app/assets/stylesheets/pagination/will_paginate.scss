@@ -43,3 +43,55 @@ $light-blue: rgb(90, 195, 226);
   background-color: rgba(0, 0, 0, 0.0);
   color: gray;
 }
+
+@media only screen and (max-width: 900px) {
+  .paginate-pages-div {
+    font-size: 28px;
+  }
+
+  .pagination {
+    column-gap: 13px;
+  }
+
+  .pagination a, .current {
+    padding: 5px 9px 5px 9px;
+  }
+}
+
+@media only screen and (max-width: 428px) {
+  .paginate-pages-div {
+    font-size: 20px;
+  }
+
+  .pagination {
+    column-gap: 12px;
+  }
+
+  .pagination a, .current {
+    padding: 5px 8px 5px 8px;
+  }
+}
+
+@media only screen and (max-width: 366px) {
+  .paginate-pages-div {
+    font-size: 18px;
+  }
+
+  .pagination {
+    column-gap: 10px;
+  }
+
+  .pagination a, .current {
+    padding: 5px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .paginate-pages-div {
+    font-size: 17.5px;
+  }
+
+  .pagination {
+    column-gap: 9px;
+  }
+}
