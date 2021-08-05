@@ -1,6 +1,6 @@
 class FriendRequestsController < ApplicationController
   def index
-    @requests = current_user.requests_as_receiver
+    @requests = current_user.requests_as_receiver.paginate(page: params[:page], per_page: 21)
   end
 
   def ajax_friend_request

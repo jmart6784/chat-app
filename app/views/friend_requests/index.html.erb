@@ -6,6 +6,8 @@
       <%= render "global_partials/user_request_options", locals: {user: request.requestor} %>
     <% end %>
   </div>
+
+  <%= render "global_partials/will_paginate", locals: {data: @requests, inner_window: 1, outer_window: 0, previous_label: '◀', next_label: '▶'} %>
 <% else %>
   <div class="no-chats-div">
     <p class="no-chats-p">No requests yet</p>
