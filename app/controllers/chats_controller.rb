@@ -58,7 +58,9 @@ class ChatsController < ApplicationController
 
   def more_messages
     @chat = Chat.find(params[:chat_id])
-    @messages = @chat.messages.order('created_at ASC')[params[:start].to_i - 3..params[:start].to_i - 1]
+    @newStart = params[:start].to_i - 3
+    @newEnd = params[:start].to_i - 1
+    @messages = @chat.messages.order('created_at ASC')[@newStart..@newEnd]
 
     respond_to do |format|
       format.js {}

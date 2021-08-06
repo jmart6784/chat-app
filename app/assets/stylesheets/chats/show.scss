@@ -208,6 +208,16 @@ $dark-blue: rgb(0, 100, 131);
   border-radius: 20px;
 }
 
+#show-more-messages {
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+}
+
+#show-more-messages:hover {
+  color: $light-blue;
+}
+
 @media only screen and (max-width: 1700px) {
   .chat-parent {
     width: 55%;

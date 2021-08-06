@@ -1,32 +1,39 @@
 var chatBox = document.getElementById("chat-box");
+var moreLink = document.getElementById("show-more-messages");
+var linkCopy = moreLink;
+linkCopy.href = "<%= more_messages_path(start: @newStart, chat_id: @chat.id) %>"
+moreLink.remove();
 
 var messagesHtml;
 var messageElements = [];
+<% unless @messages.nil? %>
+  <% @messages.each do |message| %>
+    <% is_author = message.user === current_user %>
+    <% message_style = is_author ? "message-me" : "message-them" %>
 
-<% @messages.each do |message| %>
-  <% is_author = message.user === current_user %>
-  <% message_style = is_author ? "message-me" : "message-them" %>
+    messagesHtml = `
+      <p class="message-p <%= message_style %>"><%= message.content %></p>
 
-  messagesHtml = `
-    <p class="message-p <%= message_style %>"><%= message.content %></p>
-
-    <% if is_author %>
-      <%= link_to chat_message_path(@chat, message), method: :delete, remote: true, class: "message-delete", data: { confirm: 'Are you sure?' } do %>
-        <i class="fas fa-trash message-delete"></i>
+      <% if is_author %>
+        <%= link_to chat_message_path(@chat, message), method: :delete, remote: true, class: "message-delete", data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash message-delete"></i>
+        <% end %>
+      <% else %>
+        <%= link_to message.user.username, message.user, class: "message-username" %>
       <% end %>
-    <% else %>
-      <%= link_to message.user.username, message.user, class: "message-username" %>
-    <% end %>
-  `;
+    `;
 
-  var messageDiv = document.createElement("div");
-  messageDiv.id = "message-<%= message.id %>";
-  messageDiv.classList.add("message-div");
-  messageDiv.innerHTML = messagesHtml;
+    var messageDiv = document.createElement("div");
+    messageDiv.id = "message-<%= message.id %>";
+    messageDiv.classList.add("message-div");
+    messageDiv.innerHTML = messagesHtml;
 
-  messageElements.unshift(messageDiv);
+    messageElements.unshift(messageDiv);
+  <% end %>
+
+  messageElements.forEach((element) => {
+    chatBox.insertBefore(element, chatBox.childNodes[0]);
+  });
+
+  chatBox.insertBefore(linkCopy, chatBox.childNodes[0]);
 <% end %>
-
-messageElements.forEach((element) => {
-  chatBox.insertBefore(element, chatBox.childNodes[0]);
-});
