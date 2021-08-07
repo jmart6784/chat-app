@@ -74,6 +74,18 @@ const chatShow = () => {
     });
   }
 
+  // More messages link auto clicker
+  let moreLink = document.getElementById("show-more-messages");
+
+  if (moreLink && chatBox) {
+    chatBox.addEventListener("scroll", () => {
+      moreLink = document.getElementById("show-more-messages");
+      let pos = chatBox.scrollTop;
+      if (pos === 0 && moreLink) {
+        moreLink.click();
+      }
+    });
+  }
 }
 
 export default chatShow;

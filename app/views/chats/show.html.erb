@@ -83,7 +83,7 @@
   <div class="chat-parent">
     <div id="chat-box" data-user-id="<%= current_user.id %>" data-chat-id="<%= @chat.id %>" class="chat-show-messages-div">
 
-      <%= link_to "Show more", more_messages_path(start: -3, chat_id: @chat.id), method: :put, remote: true, id: "show-more-messages" %>
+      <%= link_to "Show more", more_messages_path(start: -10, chat_id: @chat.id), method: :put, remote: true, id: "show-more-messages" %>
 
       <% @messages.each do |message| %>
         <%= render "messages/message", locals: {message: message} %>
