@@ -18,7 +18,12 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
-    @messages = @chat.messages.order('created_at ASC')[-10..@chat.messages.length - 1]
+    @messages = @chat.messages.order('created_at ASC')
+
+    if @messages.length >= 10
+      @messages = @messages[-10..@chat.messages.length - 1]
+    end
+
     redirect_to root_path unless chat_joined?(current_user, @chat)
     @message = Message.new
   end
@@ -58,21 +63,24 @@ class ChatsController < ApplicationController
 
   def more_messages
     @chat = Chat.find(params[:chat_id])
-    @new_start = params[:start].to_i
-    @messages = @chat.messages.order('created_at ASC')
-
-    temp_ary = []
-
-    10.times do
-      @new_start -= 1
-      next if @messages[@new_start].nil?
-      temp_ary << @messages[@new_start]
-    end
-
-    @messages = temp_ary
-
-    respond_to do |format|
-      format.js {}
+    
+    if chat_joined?(current_user, @chat)
+      @new_start = params[:start].to_i
+      @messages = @chat.messages.order('created_at ASC')
+  
+      temp_ary = []
+  
+      10.times do
+        @new_start -= 1
+        next if @messages[@new_start].nil?
+        temp_ary << @messages[@new_start]
+      end
+  
+      @messages = temp_ary
+  
+      respond_to do |format|
+        format.js {}
+      end
     end
   end
 
