@@ -189,6 +189,7 @@ GEM
     rspec-support (3.10.2)
     ruby-vips (2.1.2)
       ffi (~> 1.12)
+    ruby_http_client (3.5.2)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -204,6 +205,8 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    sendgrid-ruby (6.4.0)
+      ruby_http_client (~> 3.4)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -264,6 +267,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
+  sendgrid-ruby
   spring
   turbolinks (~> 5)
   tzinfo-data
