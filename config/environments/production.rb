@@ -58,6 +58,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
+  config.web_socket_server_url = "wss://quick-chats-app.herokuapp.com/cable" 
   config.action_cable.url = 'wss://quick-chats-app.herokuapp.com/cable'
   config.action_cable.allowed_request_origins = [ 'https://quick-chats-app.herokuapp.com', /http:\/\/quick-chats-app.herokuapp.*/ ]
 
