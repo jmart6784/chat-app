@@ -19,9 +19,11 @@ class ChatsController < ApplicationController
   def show
     @chat = Chat.find(params[:id])
     @messages = @chat.messages.order('created_at ASC')
+    @more_than_10 = false
 
     if @messages.length >= 10
       @messages = @messages[-10..@chat.messages.length - 1]
+      @more_than_10 = true
     end
 
     redirect_to root_path unless chat_joined?(current_user, @chat)
